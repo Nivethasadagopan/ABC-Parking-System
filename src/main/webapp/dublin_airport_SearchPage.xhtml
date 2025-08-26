@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ABC Parking System</title>
+
+
+   <link rel="stylesheet" href="#{resource['css/style_datetime_gap.css']}" />
+  <link rel="stylesheet" href="#{resource['css/style_cities.css']}" />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- Banner with Navigation -->
+  <div class="qpark-banner">
+    <div class="layout-wrapper">
+      <div class="banner-header">
+        <div class="header-left">
+          <img class="logo" src="resources/images/logo.png" alt="ABC Parking Logo" />
+        </div>
+
+        <nav class="main-nav">
+          <a href="#">Parking</a>
+          <a href="#">Products</a>
+          <a href="#">About Us</a>
+        </nav>
+
+        <div class="nav-actions">
+          <i class="fas fa-user-circle"></i>
+          <a href="#">Login</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Search Container -->
+  <div class="layout-wrapper">
+    <div class="raised-container">
+      <div class="tab-container">
+        <div class="tabs">
+          <button class="tab active">Search Parking</button>
+          <button class="tab">Pre-booking</button>
+        </div>
+
+        <div class="tab-content active">
+          <form action="#" method="post">
+            <div class="form-row">
+              <div class="form-group full-width">
+                <label for="location-info">Where do you want to go? (Enter landmark, street, shop, etc.)</label>
+                <input type="text" id="location-info" name="location-info" placeholder="Search a city or address." />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <button type="submit" class="book-button">
+                <i class="fas fa-search"></i> Search
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popular Cities Section -->
+  <div class="layout-wrapper">
+    <div class="city-grid-section">
+      <h2>Popular Cities Nearby Airport</h2>
+      <div class="city-grid">
+        <a href="#" class="city-card" style="background-image: url('resources/images/Dublin.jpg');">
+          <div class="overlay"></div>
+          <div class="city-label">Dublin</div>
+        </a>
+
+        <a href="#" class="city-card" style="background-image: url('resources/images/skerries.jpg');">
+          <div class="overlay"></div>
+          <div class="city-label">Skerries</div>
+        </a>
+
+        <a href="#" class="city-card" style="background-image: url('resources/images/malahide.jpg');">
+          <div class="overlay"></div>
+          <div class="city-label">Malahide</div>
+        </a>
+
+        <a href="#" class="city-card" style="background-image: url('resources/images/swords.jpg');">
+          <div class="overlay"></div>
+          <div class="city-label">Swords</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <div class="container">
+    <footer>
+      <p>&#169; 2025 ABC Parking System</p>
+    </footer>
+  </div>
+
+</body>
+</html>

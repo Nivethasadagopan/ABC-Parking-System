@@ -1,0 +1,188 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+/* Background with overlay */
+.background {
+    position: relative;
+    height: 100vh;
+    background: url('../images/Adminreg.png') no-repeat center center/cover;
+}
+
+.background::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: 1;
+}
+
+/* Logo top-left */
+.logo-container {
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    z-index: 3;
+}
+
+.logo {
+    width: 160px;
+    height: auto;
+}
+
+/* Center content */
+.content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    color: #fff;
+}
+
+.main-title {
+    font-size: 42px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Login Form */
+.reg-form {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
+    width: 350px;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.form-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #fff;
+    text-align: center;
+}
+
+/* Each input row */
+.form-row {
+    margin-bottom: 20px;
+}
+
+/* Labels */
+.form-label {
+    display: block;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+/* Input fields */
+.form-input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.form-input::placeholder {
+    color: #777;
+    font-size: 14px;
+}
+
+/* Buttons */
+.register-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #8bb611;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.register-btn:hover {
+    background: #6cc44a;
+}
+
+/* Error messages */
+.error-messages {
+    color: #ff4d4d;
+    font-size: 14px;
+    margin-bottom: 15px;
+    display: block;
+}
+
+/* Bottom decoration image */
+.bottom-img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+/* Responsive */
+@media(max-width:768px) {
+    .logo {
+        width: 120px;
+    }
+    .main-title {
+        font-size: 30px;
+    }
+    .reg-form {
+        width: 90%;
+    }
+}
+
+/* Info Section */
+.info-section {
+    background: #141414; /* dark background */
+    color: #fff;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.info-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.info-section h2 {
+    font-size: 38px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.info-section p {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    color: #ddd;
+}
+
+.info-section .highlight {
+    font-size: 16px;
+    font-style: italic;
+    color: #ffcc66;
+}

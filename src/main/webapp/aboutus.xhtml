@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xml:lang="en" lang="en">
+
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ABC Parking System</title>
+
+    <!-- Backend-aware resource loading -->
+    <link rel="stylesheet" href="#{resource['css/footer.css']}" type="text/css" />
+    <link rel="stylesheet" href="#{resource['css/header.css']}" type="text/css" />
+    <link rel="stylesheet" href="#{resource['css/aboutus.css']}" type="text/css" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</h:head>
+
+<h:body>
+
+    <!-- HEADER -->
+    <div class="main-header">
+        <div class="header-container">
+            <div class="logo">
+             <a href="index2.xhtml">
+                <h:graphicImage library="images" name="ABC_logo.png" alt="ABC Parking Logo" />
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index2.xhtml">Home</a></li>
+                    <li><a href="cities.xhtml">Parking</a></li>
+                    <li><a href="products.xhtml">Products</a></li>
+                    <li><a href="aboutus.xhtml">About Us</a></li>
+                    <li><a href="reg.xhtml"><i class="fa-solid fa-user"></i> Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- PAGE HEADER -->
+    <div class="about-header">
+        <h1>About ABC Parking</h1>
+        <p>Learn more about our company, mission, and values</p>
+    </div>
+
+    <!-- INFO CARDS -->
+    <div class="card-container">
+
+<div class="info-card">
+    <h:graphicImage library="images" name="Who We Are.jpg" alt="Dublin" />
+    <div class="card-content">
+        <h3>Who are we?</h3>
+        <p>Information about ABC Parking, the company and what makes us different.</p>
+        <a href="moreinfo.xhtml" class="read-more">Read more →</a>
+    </div>
+</div>
+
+
+        <div class="info-card">
+            <h:graphicImage library="images" name="CSR.jpg" alt="CSR" />
+            <div class="card-content">
+                <h3>CSR</h3>
+                <p>Our Corporate Social Responsibility focuses on sustainable and environmental goals.</p>
+                <a href="moreinfo.xhtml" class="read-more">Read more →</a>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h:graphicImage library="images" name="Team.png" alt="Our Team" />
+            <div class="card-content">
+                <h3>Our Team</h3>
+                <p>Meet the people behind ABC Parking, working to make your experience better.</p>
+                <a href="moreinfo.xhtml" class="read-more">Read more →</a>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h:graphicImage library="images" name="swords.jpg" alt="Our History" />
+            <div class="card-content">
+                <h3>Our History</h3>
+                <p>Discover our journey from a small parking provider to a nationwide leader.</p>
+                <a href="moreinfo.xhtml" class="read-more">Read more →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAYMENT METHODS -->
+    <div class="footer-payment-methods" style="background:#fff; border-top:1px solid #ccc; padding:15px 20px;">
+        <div style="display:flex; align-items:center; justify-content:center; gap:10px;">
+            <span style="font-weight:bold; color:#000;">Online Payment Methods</span>
+            <a href="https://www.paypal.com" target="_blank" style="display:inline-block;">
+                <h:graphicImage library="images" name="PayPal-Logo.png" alt="PayPal" style="max-height:30px; width:auto; display:block;" />
+            </a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <div class="footer-container">
+            <div class="footer-section about">
+                <h3>About Us</h3>
+                <p>We provide top-quality parking solutions with easy booking and secure facilities in multiple cities.</p>
+            </div>
+
+            <div class="footer-section quick-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="Terms.xhtml">Terms &amp; Conditions</a></li>
+                    <li><a href="index2.xhtml">Home</a></li>
+                    <li><a href="index2.xhtml">Find Parking</a></li>
+                    <li><a href="index2.xhtml">Pre-book</a></li>
+                    <li><a href="cities.xhtml">Popular Cities</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section contact">
+                <h3>Contact</h3>
+                <p>Email: <a href="mailto:info@example.com">support@abcparking.com</a></p>
+                <p>Phone: +123 456 789</p>
+                <p>Address: Main Street, Dublin</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 ABC Parking System. All Rights Reserved.</p>
+        </div>
+    </div>
+
+</h:body>
+</html>

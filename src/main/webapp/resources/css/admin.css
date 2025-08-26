@@ -1,0 +1,189 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+/* Background with overlay */
+.background {
+    position: relative;
+    height: 100vh;
+    background: url("../resources/images/Adminreg.png") no-repeat center center/cover;
+}
+
+
+.background::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,0.5); /* overlay */
+}
+
+/* Center content */
+.content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+}
+
+/* Logo */
+.logo {
+    width: 180px;
+    height: auto;
+    margin-bottom: 25px;
+}
+
+/* Buttons */
+.btn-container {
+    display: flex;
+    gap: 25px;
+}
+
+.btn {
+    background: #8bb611;
+    color: #fff;
+    padding: 14px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #70920D;
+}
+
+/* My Account dropdown */
+.account-container {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    z-index: 3;
+}
+
+.account-btn {
+    background: transparent;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.3s;
+}
+
+/* Down arrow */
+.account-btn::after {
+    content: "▼";
+    font-size: 12px;
+    transition: transform 0.3s;
+}
+
+/* Rotate arrow when open */
+.account-container.show .account-btn::after {
+    transform: rotate(180deg);
+}
+
+.account-btn:hover {
+    color: #8bb611;
+}
+
+/* Dropdown menu */
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 15px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    z-index: 10;
+}
+
+.dropdown a {
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    transition: background 0.3s;
+}
+
+.dropdown a:hover {
+    background: #f1f1f1;
+}
+
+/* Show dropdown when active */
+.account-container.show .dropdown {
+    display: block;
+}
+
+/* Bottom decoration image */
+.bottom-img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+/* Responsive */
+@media(max-width:768px) {
+    .logo {
+        width: 140px;
+    }
+    .btn-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+/* Info Section */
+.info-section {
+    background: #333; /* dark background */
+    color: #fff;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.info-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.info-section h2 {
+    font-size: 38px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.info-section p {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    color: #ddd;
+}
+
+.info-section .highlight {
+    font-size: 16px;
+    font-style: italic;
+    color: #ffcc66;
+}
+

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>Monitor Members</title>
+    <h:outputStylesheet library="css" name="memberlist.css"/>
+</h:head>
+
+<h:body>
+    <div class="background">
+
+        <!-- Logo -->
+        <div class="logo-container">
+            <h:graphicImage library="images" name="Adminlogo.png" alt="Logo" styleClass="logo"/>
+        </div>
+
+        <!-- Table -->
+        <div class="table-wrapper">
+            <h2>Members List</h2>
+
+            <h:dataTable value="#{memberListBean.members}" var="m" border="1" styleClass="data-table">
+
+                <!-- ✅ S.No Column -->
+                <h:column>
+                    <f:facet name="header">S.No</f:facet>
+                    #{memberListBean.members.indexOf(m) + 1}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Company</f:facet>
+                    #{m.company}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Email</f:facet>
+                    #{m.email}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Address</f:facet>
+                    #{m.address}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Spaces</f:facet>
+                    #{m.numberOfSpaces}
+                </h:column>
+
+                <!-- ✅ Status Column -->
+                <h:column>
+                    <f:facet name="header">Status</f:facet>
+                    <span style="color:red; font-weight:bold;">Reserved</span>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Actions</f:facet>
+                    <h:form>
+                        <h:commandButton value="Edit"
+                                         action="#{memberListBean.edit(m)}"
+                                         styleClass="btn-edit"/>
+                        <h:commandButton value="Delete"
+                                         action="#{memberListBean.delete(m)}"
+                                         styleClass="btn-delete"/>
+                    </h:form>
+                </h:column>
+            </h:dataTable>
+
+<h:button value="Back to Dashboard"
+          outcome="AdminDashboard"
+          styleClass="register-btn"/>
+
+
+        </div>
+    </div>
+</h:body>
+</html>

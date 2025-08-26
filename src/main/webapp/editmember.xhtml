@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<h:head>
+    <title>Edit Member</title>
+    <h:outputStylesheet library="css" name="editmember.css"/>
+</h:head>
+
+<h:body>
+    <div class="background">
+
+        <!-- ✅ Logo in top-left with margin -->
+        <div class="logo-container">
+            <h:graphicImage library="images" name="Adminlogo.png" 
+                            alt="ABC Parking Logo" styleClass="logo"/>
+        </div>
+
+        <!-- ✅ Form Wrapper -->
+        <div class="form-wrapper">
+            <h2>Edit Member</h2>
+
+            <h:form>
+                <div class="form-row">
+                    <h:outputLabel for="company" value="Company:"/>
+                    <h:inputText id="company" value="#{memberListBean.selectedMember.company}" required="true"/>
+                </div>
+
+                <div class="form-row">
+                    <h:outputLabel for="email" value="Email:"/>
+                    <h:inputText id="email" value="#{memberListBean.selectedMember.email}" required="true"/>
+                </div>
+
+                <div class="form-row">
+                    <h:outputLabel for="address" value="Address:"/>
+                    <h:inputText id="address" value="#{memberListBean.selectedMember.address}" required="true"/>
+                </div>
+
+                <div class="form-row">
+                    <h:outputLabel for="spaces" value="No. of Spaces:"/>
+                    <h:inputText id="spaces" value="#{memberListBean.selectedMember.numberOfSpaces}" required="true"/>
+                </div>
+
+                <h:commandButton value="Update"
+                                 action="#{memberListBean.update}"
+                                 styleClass="btn-update"/>
+                <h:button value="Cancel"
+                          outcome="member-list"
+                          styleClass="btn-cancel"/>
+            </h:form>
+        </div>
+    </div>
+</h:body>
+</html>

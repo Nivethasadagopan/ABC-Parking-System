@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<h:head>
+    <title>Add Member</title>
+    <h:outputStylesheet library="css" name="addmember.css"/>
+</h:head>
+
+<h:body>
+    <!-- ✅ Background -->
+    <div class="background">
+
+        <!-- Logo top-left -->
+        <div class="logo-container">
+            <h:graphicImage library="images" name="Adminlogo.png" alt="ABC Parking Logo" styleClass="logo"/>
+        </div>
+
+        <!-- Form Wrapper -->
+        <div class="register-wrapper">
+            <h2 class="form-title">Add Member</h2>
+
+            <h:form id="addMemberForm">
+
+<!-- Company -->
+<div class="form-row">
+    <h:outputLabel for="company" value="Company:" styleClass="form-label"/>
+    <h:inputText id="company" value="#{addMemberBean.company}" required="true"
+                 requiredMessage="Company is required"
+                 styleClass="form-input"/>
+    <h:message for="company" 
+               style="color: #8bb611; font-size: 14px; display: block; 
+                      text-align: center; margin-top: 6px;"/>
+</div>
+
+<!-- Email -->
+<div class="form-row">
+    <h:outputLabel for="email" value="Email:" styleClass="form-label"/>
+    <h:inputText id="email" value="#{addMemberBean.email}" required="true"
+                 requiredMessage="Email is required"
+                 styleClass="form-input"/>
+    <h:message for="email" 
+               style="color: #8bb611; font-size: 14px; display: block; 
+                      text-align: center; margin-top: 6px;"/>
+</div>
+
+<!-- Address -->
+<div class="form-row">
+    <h:outputLabel for="address" value="Address:" styleClass="form-label"/>
+    <h:inputText id="address" value="#{addMemberBean.address}" required="true"
+                 requiredMessage="Address is required"
+                 styleClass="form-input"/>
+    <h:message for="address" 
+               style="color: #8bb611; font-size: 14px; display: block; 
+                      text-align: center; margin-top: 6px;"/>
+</div>
+
+<!-- Password -->
+<div class="form-row">
+    <h:outputLabel for="password" value="Password:" styleClass="form-label"/>
+    <h:inputSecret id="password" value="#{addMemberBean.password}" required="true"
+                   requiredMessage="Password is required"
+                   styleClass="form-input"/>
+    <h:message for="password" 
+               style="color: #8bb611; font-size: 14px; display: block; 
+                      text-align: center; margin-top: 6px;"/>
+</div>
+
+<!-- No. of Spaces -->
+<div class="form-row">
+    <h:outputLabel for="spaces" value="No. of Spaces:" styleClass="form-label"/>
+    <h:inputText id="spaces" value="#{addMemberBean.numberOfSpaces}" required="true"
+                 requiredMessage="Number of spaces is required"
+                 styleClass="form-input"/>
+    <h:message for="spaces" 
+               style="color: #8bb611; font-size: 14px; display: block; 
+                      text-align: center; margin-top: 6px;"/>
+</div>
+
+
+                <!-- Save Button -->
+                <h:commandButton value="Save Member"
+                                 action="#{addMemberBean.save}"
+                                 styleClass="register-btn"/>
+
+               
+
+                <!-- Success/Error Message -->
+                <h:outputText value="#{addMemberBean.message}"
+                              rendered="#{not empty addMemberBean.message}"
+                              styleClass="#{addMemberBean.message.startsWith('Member added successfully') ? 'success-message' : 'error-message'}"/>
+            </h:form>
+        </div>
+
+        <!-- Bottom Decoration -->
+        <h:graphicImage library="images" name="Adminreg1.png" alt="Decoration" styleClass="bottom-img"/>
+    </div>
+
+    <!-- Info Section -->
+    <section class="info-section">
+        <div class="info-container">
+            <h2>Member Management</h2>
+            <p>
+                Add and manage company members with allocated parking spaces.
+                This ensures streamlined operations and better parking management.
+            </p>
+            <p class="highlight">
+                Every member gets secure access to manage their own slots.
+            </p>
+        </div>
+    </section>
+</h:body>
+</html>

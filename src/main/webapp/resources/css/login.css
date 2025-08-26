@@ -1,0 +1,113 @@
+/* ============================= */
+/* RESET & BASE STYLES */
+/* ============================= */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* ============================= */
+/* HEADER */
+/* ============================= */
+.main-header {
+    width: 100%;
+    background-color: white;
+    border-bottom: 2px solid #ff2e2e;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+}
+.logo img,
+.logo h\:graphicImage {
+    max-height: 60px;
+    width: auto;
+}
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+}
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+nav ul li a:hover {
+    color: #ff2e2e;
+}
+
+/* ============================= */
+/* LOGIN SECTION */
+/* ============================= */
+.login-section {
+    padding: 50px 20px;
+    background-color: #f8f8f8;
+    min-height: 70vh;
+    display: flex;
+    justify-content: flex-start; /* Keep login container on left */
+    align-items: center;
+
+    /* Background image */
+    background-image: url("#{resource['images/parkings_artboard.png']}");
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-size: 500px auto; /* Fixed width at 500px */
+}
+
+.login-container {
+    margin-left: 200px; /* Push login form to right */
+}
+
+.login-card {
+	height: 300px;
+    background: white;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: inline-block;
+    min-width: 300px;
+}
+.login-card h3 {
+	text-align: center;
+    margin-top: 0;
+}
+.login-btn,
+.register-btn {
+    display: block;
+    width: 95%;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    text-decoration: none;
+}
+.login-btn {
+	color: #7ed957;
+	margin-top: 180px;
+    background: #e8ffe8;
+    border: 1px solid #7ed957;
+}
+.login-btn:hover {
+    background: #d4fcd4;
+}
+.register-btn {
+	border: 1px solid #7ed957;
+	color: #7ed957;
+    background: #f8f8f8;
+}
+.register-btn:hover {
+    background: #eee;
+}
+

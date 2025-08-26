@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<h:head>
+    <title>Success</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/adminlogin.css" />
+    <link rel="stylesheet" type="text/css" href="resources/css/success.css" />
+</h:head>
+
+<h:body>
+<div class="background">
+
+    <!-- Logo top-left -->
+    <div class="logo-container">
+        <img src="resources/images/Adminlogo.png" alt="ABC Parking Logo" class="logo"/>
+    </div>
+
+    <!-- Center Card -->
+    <div class="content">
+        <div class="success-card">
+            <h1>✅ Success</h1>
+
+            <!-- FacesMessages -->
+            <h:messages id="msgs" globalOnly="true" layout="list" styleClass="error-messages"/>
+
+            <p>The data has been saved successfully.</p>
+
+            <!-- Button -->
+            <div class="actions">
+                <h:button outcome="AdminDashboard" 
+                          value="Go to Dashboard" 
+                          styleClass="register-btn" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Decoration -->
+    <img src="resources/images/Adminreg1.png" alt="Bottom Decoration" class="bottom-img"/>
+</div>
+</h:body>
+</html>

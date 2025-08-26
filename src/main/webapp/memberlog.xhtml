@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xml:lang="en" lang="en">
+
+<h:head>
+  <title>ABC Parking — Member Login</title>
+  <h:outputStylesheet library="css" name="memberlogin.css"/> 
+  <!-- 👆 link your provided CSS file -->
+</h:head>
+
+<h:body>
+
+  <div class="background">
+    
+    <!-- ✅ Logo -->
+    <div class="logo-container">
+      <h:graphicImage library="images" name="Adminlogo.png" alt="ABC Parking Logo" styleClass="logo"/>
+    </div>
+
+    <!-- ✅ Login Wrapper -->
+    <div class="register-wrapper">
+      <h2 class="form-title">Member Account Login</h2>
+
+      <!-- ✅ Login form -->
+      <h:form>
+        
+        <!-- Email -->
+<!-- Email -->
+<div class="form-row">
+  <h:outputLabel for="email" value="Email:" styleClass="form-label"/>
+  <h:inputText id="email" 
+               value="#{memberLoginBean.email}" 
+               required="true" 
+               requiredMessage="Email is required"
+               styleClass="form-input" 
+               pt:placeholder="Enter your email"/>
+  <h:message for="email" 
+             style="color:#8bb611; font-size:14px; display:block; text-align:center; margin-top:6px;"/>
+</div>
+
+<!-- Password -->
+<div class="form-row">
+  <h:outputLabel for="password" value="Password:" styleClass="form-label"/>
+  <h:inputSecret id="password" 
+                 value="#{memberLoginBean.password}" 
+                 required="true" 
+                 requiredMessage="Password is required"
+                 styleClass="form-input" 
+                 pt:placeholder="Enter your password"/>
+  <h:message for="password" 
+             style="color:#8bb611; font-size:14px; display:block; text-align:center; margin-top:6px;"/>
+</div>
+
+
+        <!-- ✅ Buttons -->
+        <h:commandButton value="Login" 
+                         action="#{memberLoginBean.login}" 
+                         styleClass="register-btn"/>
+        
+        <!-- ✅ Error or Success Message -->
+        <h:outputText value="#{memberLoginBean.message}" 
+                      styleClass="error-message"
+                      rendered="#{not empty memberLoginBean.message}"/>
+
+      </h:form>
+
+    </div>
+  </div>
+
+</h:body>
+</html>

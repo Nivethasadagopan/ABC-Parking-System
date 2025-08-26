@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xml:lang="en" lang="en">
+
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ABC Parking System</title>
+
+    <!-- Backend-aware resource loading -->
+    <link rel="stylesheet" href="#{resource['css/footer.css']}" type="text/css" />
+    <link rel="stylesheet" href="#{resource['css/header.css']}" type="text/css" />
+    <link rel="stylesheet" href="#{resource['css/aboutus.css']}" type="text/css" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</h:head>
+
+<h:body>
+
+    <!-- HEADER -->
+    <div class="main-header">
+        <div class="header-container">
+            <div class="logo">
+             <a href="index2.xhtml">
+                <h:graphicImage library="images" name="ABC_logo.png" alt="ABC Parking Logo" />
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index2.xhtml">Home</a></li>
+                    <li><a href="cities.xhtml">Parking</a></li>
+                    <li><a href="products.xhtml">Products</a></li>
+                    <li><a href="aboutus.xhtml">About Us</a></li>
+                    <li><a href="reg.xhtml"><i class="fa-solid fa-user"></i> Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- PAGE HEADER -->
+    <div class="about-header">
+        <h1>What is a Flexi Premier Card?</h1>
+    </div>
+
+    <!-- INFO CARDS -->
+    <div class="card-container">
+
+<div class="info-card">
+    <h:graphicImage library="images" name="Who We Are.jpg" alt="Dublin" />
+    <div class="card-content">
+        <h3>Flexi Card</h3>
+        <p>Flexi Premier Cards are perfect for part-time commuters or visitors who don’t need parking every day, usable at conveniently located city centre car parks across Ireland. As part of your Flexi Premier Cards you'll receive:
+A set number of hours (90 or 120) to use across multiple visits.
+Full flexibility to park when it suits your schedule.
+Convenient online account management.
+Entry and exit with your number plate, no need for paper tickets!
+Your parking just got even easier.</p>
+
+        
+    </div>
+</div>
+  </div>
+
+    <!-- PAYMENT METHODS -->
+    <div class="footer-payment-methods" style="background:#fff; border-top:1px solid #ccc; padding:15px 20px;">
+        <div style="display:flex; align-items:center; justify-content:center; gap:10px;">
+            <span style="font-weight:bold; color:#000;">Online Payment Methods</span>
+            <a href="https://www.paypal.com" target="_blank" style="display:inline-block;">
+                <h:graphicImage library="images" name="PayPal-Logo.png" alt="PayPal" style="max-height:30px; width:auto; display:block;" />
+            </a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <div class="footer-container">
+            <div class="footer-section about">
+                <h3>About Us</h3>
+                <p>We provide top-quality parking solutions with easy booking and secure facilities in multiple cities.</p>
+            </div>
+
+            <div class="footer-section quick-links">
+                <h3>Quick Links</h3>
+                        <div class="footer-column">
+               <ul>
+                    <li><a href="Terms.xhtml">Terms &amp; Conditions</a></li>
+                    <li><a href="index2.xhtml">Home</a></li>
+                    <li><a href="index2.xhtml">Find Parking</a></li>
+                    <li><a href="index2.xhtml">Pre-book</a></li>
+                    <li><a href="cities.xhtml">Popular Cities</a></li>
+                </ul>
+            </div>
+            </div>
+
+            <div class="footer-section contact">
+                <h3>Contact</h3>
+                <p>Email: <a href="mailto:info@example.com">support@abcparking.com</a></p>
+                <p>Phone: +123 456 789</p>
+                <p>Address: Main Street, Dublin</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 ABC Parking System. All Rights Reserved.</p>
+        </div>
+    </div>
+
+</h:body>
+</html>
+
+

@@ -1,0 +1,92 @@
+/* PRE-BOOK SECTION */
+.prebook-section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: Arial, sans-serif;
+    color: #000;
+    line-height: 1.6;
+}
+
+.prebook-section .breadcrumb {
+    font-size: 14px;
+    color: #c00;
+    margin-bottom: 15px;
+}
+
+.prebook-section .breadcrumb a {
+    color: #c00;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.prebook-section h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.prebook-section .intro-text {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.prebook-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.benefits-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.benefits-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+.benefits-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 4px;
+    height: 14px;
+    background: #c00; /* red bar like image */
+}
+
+.prebook-section .note {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+.btn-prebook {
+    display: inline-block;
+    background: #8cc63f;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.faq-box {
+    border: 2px solid #8cc63f;
+    background: #f9fff3;
+    padding: 10px 15px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.faq-box a {
+    color: #333;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 14px;
+}

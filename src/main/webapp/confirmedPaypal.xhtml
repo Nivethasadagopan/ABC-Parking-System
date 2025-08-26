@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Booking Confirmation</title>
+	<link rel="stylesheet" href="resources/CSS/stylesheet.css" />
+	<style>
+.confirmation-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 15px;
+}
+
+.confirmation-table th, .confirmation-table td {
+	padding: 10px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+.confirmation-table th {
+	background-color: #28a745;
+	color: white;
+	font-weight: bold;
+}
+
+.confirmation-table tr:nth-child(even) {
+	background-color: #f8f9fa;
+}
+
+.total-paid {
+	background-color: #d4edda;
+	color: #155724;
+	padding: 15px;
+	border-radius: 5px;
+	margin-top: 20px;
+	text-align: center;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.success-message {
+	background-color: #d1ecf1;
+	color: #0c5460;
+	padding: 15px;
+	border-radius: 5px;
+	margin-bottom: 20px;
+	border-left: 4px solid #bee5eb;
+}
+</style>
+
+	<!-- Process the booking when page loads -->
+	<f:metadata>
+		<f:viewAction action="#{cartBean.markSpacesAsBooked}" />
+	</f:metadata>
+</h:head>
+<body>
+	<h:form>
+		<!-- Top Navigation Buttons -->
+		<div class="top-buttons">
+			<a href="http://localhost:8080/com.Team7Project/index2.xhtml"
+				class="button">Home</a>
+		</div>
+
+		<!-- Page Title -->
+		<div class="page-title">
+			<h1>Payment Successful!</h1>
+		</div>
+
+		<!-- Success Message -->
+		<div class="section-box">
+			<div class="success-message">
+				<h3>Payment Completed Successfully!</h3>
+				<p>
+					Your parking space reservations have been confirmed.
+				</p>
+				
+			</div>
+		</div>
+
+		<!-- Check if we have cart items to display -->
+		<h:panelGroup rendered="#{not empty cartBean.cartItems}">
+			<!-- Booking Details Section -->
+			<div class="section-box">
+				<h2>Your Confirmed Bookings:</h2>
+
+				<table class="confirmation-table">
+					<thead>
+						<tr>
+							<th>Parking Space</th>
+							<th>Location</th>
+							<th>From</th>
+							<th>To</th>
+							<th>Duration</th>
+							<th>Rate/Hour</th>
+							<th>Total Cost</th>
+							<th>Accessible</th>
+							<th>Status</th>
+						</tr>
+					</thead>
+					<tbody>
+						<ui:repeat value="#{cartBean.cartItems}" var="item">
+							<tr>
+								<td><strong>Space
+										##{item.parkingSpace.spaceNumber}</strong></td>
+								<td>#{item.parkingSpace.address1}<br /> <small
+									style="color: #666;">#{item.parkingSpace.city}</small>
+								</td>
+								<td><h:outputText value="#{item.bookingStart}">
+										<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+									</h:outputText></td>
+								<td><h:outputText value="#{item.bookingEnd}">
+										<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+									</h:outputText></td>
+								<td><h:outputText
+										value="#{(item.bookingEnd.time - item.bookingStart.time) / (1000 * 60 * 60)}">
+										<f:convertNumber pattern="0.0" />
+									</h:outputText> hours</td>
+								<td>€<h:outputText
+										value="#{item.parkingSpace.pricePerHour}">
+										<f:convertNumber pattern="0.00" />
+									</h:outputText>
+								</td>
+								<td>€<h:outputText value="#{cartBean.getItemCost(item)}">
+										<f:convertNumber pattern="0.00" />
+									</h:outputText>
+								</td>
+								<td><span
+									style="color: #{item.parkingSpace.accessibleParking ? 'green' : 'gray'};">
+										#{item.parkingSpace.accessibleParking ? 'Yes' : 'No'} </span></td>
+								<td><span
+									style="color: #{item.parkingSpace.available ? 'orange' : 'red'}; font-weight: bold;">
+										#{item.parkingSpace.available ? 'Processing...' : ' RESERVED'}
+								</span></td>
+							</tr>
+						</ui:repeat>
+					</tbody>
+				</table>
+
+				<div class="total-paid">
+					Total Paid: €
+					<h:outputText value="#{cartBean.totalPrice}">
+						<f:convertNumber pattern="0.00" />
+					</h:outputText>
+				</div>
+			</div>
+		</h:panelGroup>
+
+		<!-- Fallback if no cart items (shouldn't happen normally) -->
+		<h:panelGroup rendered="#{empty cartBean.cartItems}">
+			<div class="section-box">
+				<div class="success-message">
+					<h3>Payment Successful!</h3>
+					<p>Your booking has been confirmed. Please check your email for
+						details.</p>
+				</div>
+			</div>
+		</h:panelGroup>
+
+		<!-- Additional Actions -->
+		<div class="section-box" style="text-align: center; margin-top: 30px;">
+			<h3>What's Next?</h3>
+			<p>Your parking spaces are now reserved! You can view all parking
+				spaces or search for additional ones.</p>
+			 <a href="search-parking.xhtml" class="button"
+				style="margin: 5px;">Book More Parking</a>
+
+		</div>
+	</h:form>
+</body>
+</html>

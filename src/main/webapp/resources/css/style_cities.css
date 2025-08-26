@@ -1,0 +1,275 @@
+/* -------------------- */
+/* RESET & BASE STYLES */
+/* -------------------- */
+body {
+  margin: 0;
+  font-family: 'Roboto', Arial, sans-serif;
+  background-color: #e6f2f1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.layout-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ---------------- */
+/* BANNER / HEADER  */
+/* ---------------- */
+.qpark-banner {
+  background-color: #00bfff;
+  color: white;
+  padding: 20px 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.banner-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-left .logo {
+  width: 40px;
+  height: auto;
+}
+
+.main-nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: 600;
+  transition: opacity 0.3s ease;
+}
+
+.main-nav a:hover {
+  opacity: 0.8;
+}
+
+/* ---------------- */
+/* NAVIGATION ACTIONS & LOGIN DROPDOWN */
+/* ---------------- */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-actions i {
+  font-size: 26px;
+  color: white;
+}
+
+.nav-actions a {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav-actions a:hover {
+  text-decoration: underline;
+}
+
+/* Dropdown container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown trigger */
+.dropdown-toggle {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 8px 12px;
+  color: white;
+}
+
+/* Dropdown menu (hidden by default) */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #ffffff;
+  min-width: 180px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+
+/* Dropdown links */
+.dropdown-menu a {
+  display: block;
+  padding: 10px 16px;
+  text-decoration: none;
+  color: #333;
+  transition: background 0.2s ease;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f2f2f2;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Show dropdown when .show class is toggled */
+.dropdown-menu.show {
+  display: block;
+}
+
+/* ------------------- */
+/* RAISED SEARCH BOX   */
+/* ------------------- */
+.raised-container {
+  background-color: white;
+  padding: 30px;
+  margin-top: -30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+/* ------------------- */
+/* TAB SYSTEM          */
+/* ------------------- */
+.tab-container .tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 10px 20px;
+  background-color: #d1f0ee;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #00221e;
+  transition: background-color 0.3s ease;
+}
+
+.tab.active {
+  background-color: #00bfff;
+  color: white;
+}
+
+.tab:hover:not(.active) {
+  background-color: #6ed1f2;
+}
+
+/* ------------------- */
+/* FORM STYLES         */
+/* ------------------- */
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.form-group input[type="text"] {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  width: 100%;
+}
+
+/* ------------------- */
+/* SEARCH BUTTON       */
+/* ------------------- */
+.book-button {
+  background-color: #00bfff;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  align-self: flex-start;
+}
+
+.book-button:hover {
+  background-color: #6ed1f2;
+}
+
+/* ------------------- */
+/* POPULAR CITIES GRID */
+/* ------------------- */
+.city-grid-section h2 {
+  font-size: 26px;
+  color: #00221e;
+  margin-bottom: 20px;
+}
+
+.city-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.city-card {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.city-card:hover {
+  transform: scale(1.03);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+}
+
+.city-label {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* ------------------- */
+/* FOOTER              */
+/* ------------------- */
+footer {
+  background-color: #00bfff;
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+  flex-shrink: 0;
+  margin-top: auto;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xml:lang="en" lang="en">
+
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ABC Parking System</title>
+
+    <!-- Backend-aware resource loading -->
+    <link rel="stylesheet" href="#{resource['css/footer.css']}" type="text/css" />
+    <link rel="stylesheet" href="#{resource['css/header.css']}" type="text/css" />
+    <link rel="stylesheet" href="#{resource['css/moreinfo.css']}" type="text/css" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</h:head>
+
+<h:body>
+
+<!-- HEADER -->
+<div class="main-header">
+    <div class="header-container">
+        <div class="logo">
+         <a href="index2.xhtml">
+            <h:graphicImage library="images" name="ABC_logo.png" alt="ABC Parking Logo" />
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index2.xhtml">Home</a></li>
+                <li><a href="cities.xhtml">Parking</a></li>
+                <li><a href="products.xhtml">Products</a></li>
+                <li><a href="aboutus.xhtml">About Us</a></li>
+                <li><a href="reg.xhtml"><i class="fa-solid fa-user"></i> Login </a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+    
+    <!-- PRE-BOOK SECTION -->
+<section class="prebook-section">
+    <div class="breadcrumb">
+        <a href="#">ABC-Parking Ireland</a> / <span>More Info</span>
+    </div>
+
+    <h1>ABC is one of Europe's leading parking service providers</h1>
+
+     <p class ="intro-text">
+        ABC is one of Europe's leading parking service providers. Dedicated to better parking, ABC stands for Quality in parking and is known for high quality, secure, clean, and well-managed parking facilities across Europe. We fulfil the need for quality parking solutions in strategic locations, including all major cities. 
+    </p>
+    
+    <h3>Why park with us?</h3>
+    <ul class="benefits-list">
+        <li>Location, location, location. We have a parking facilities in all the major areas near Airport</li>
+        <li>Safe and secure parking</li>
+        <li>National Electric Vehicle charging network</li>
+        <li>24/7 customer service support</li>
+    </ul>
+    
+    <h3>ABC's Corporate Social Responsibility (CSR)</h3>
+    <p class="intro-text">
+        ABC's Corporate Social Responsibility (CSR) is closely linked to sustainable development; sustainable, social and environmental aspects that are relevant to everyone and to future generations. Contributing to sustainable development is therefore an overarching objective of ABC's CSR policy
+    </p>
+    
+    <ul class="benefits-list">
+        <li>To support sustainable mobility that meets society’s economic, social and environmental needs</li>
+        <li>To help improve customer and employee engagement, health and safety aspects </li>
+        <li>To improve environmental performance of parking facilities, fleet, offices and value chain relations </li>
+        <li>To enable access to main functionalities in a context of sustainability concerns</li>
+    </ul>
+    
+    <h3>Our History</h3>
+    <p class="intro-text">
+        For over 30 years, under the leadership of CEO Charles Reilly, ABC has been home to a thriving community of start-ups and established companies. Conveniently located beside Dublin Airport with excellent motorway and rail access, the campus has grown to include modern office spaces, cafés, and recreational facilities designed to support work-life balance
+    </p>
+
+     <h3>Our Team</h3>
+    <p class="intro-text">
+     At ABC, our people drive innovation from creating a dynamic business campus to pioneering new solutions that make work and travel easier.
+    </p>
+     
+    <!-- <p class="note">
+        With the exception of the Evening Parking Special, all pre-bookings must be made at least the day before the booking is due to commence. 
+        If you are looking to park today, you will be able to turn up and pay at the car park as usual
+    </p> -->
+
+    <a href="index2.xhtml" class="btn-prebook">Pre-book here</a>
+
+    <div class="faq-box">
+        <a href="FAQ.xhtml">Frequently Asked Questions</a>
+    </div>
+</section>
+    
+
+
+
+    <!-- PAYMENT METHODS -->
+    <div class="footer-payment-methods" style="background:#fff; border-top:1px solid #ccc; padding:15px 20px;">
+        <div style="display:flex; align-items:center; justify-content:center; gap:10px;">
+            <span style="font-weight:bold; color:#000;">Online Payment Methods</span>
+            <a href="https://www.paypal.com" target="_blank" style="display:inline-block;">
+                <h:graphicImage library="images" name="PayPal-Logo.png" alt="PayPal" style="max-height:30px; width:auto; display:block;" />
+            </a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <div class="footer-container">
+            <div class="footer-section about">
+                <h3>About Us</h3>
+                <p>We provide top-quality parking solutions with easy booking and secure facilities in multiple cities</p>
+            </div>
+
+            <div class="footer-section quick-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="Terms.xhtml">Terms &amp; Conditions</a></li>
+                    <li><a href="index2.xhtml">Home</a></li>
+                    <li><a href="index2.xhtml">Find Parking</a></li>
+                    <li><a href="index2.xhtml">Pre-book</a></li>
+                    <li><a href="cities.xhtml">Popular Cities</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section contact">
+                <h3>Contact</h3>
+                <p>Email: <a href="mailto:info@example.com"> support@abcparking.com</a></p>
+                <p>Phone: +123 456 789</p>
+                <p>Address: Main Street, Dublin</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 ABC Parking System. All Rights Reserved.</p>
+        </div>
+    </div>
+
+</h:body>
+</html>

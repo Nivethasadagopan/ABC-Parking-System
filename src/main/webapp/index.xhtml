@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xml:lang="en" lang="en">
+
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ABC Parking System</title>
+
+    <link rel="stylesheet" href="#{resource['css/footer.css']}" type="text/css" />
+    <link rel="stylesheet" href="#{resource['css/header.css']}" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      .content-wrapper {
+        flex: 1;
+      }
+      .about-header {
+        text-align: center;
+      }
+    </style>
+</h:head>
+
+<h:body>
+
+    <div class="content-wrapper">
+      <!-- HEADER -->
+      <div class="main-header">
+          <div class="header-container">
+              <div class="logo">
+                  <a href="indexcustomer.xhtml">
+                      <h:graphicImage library="images" name="ABC_logo.png" alt="ABC Parking Logo" />
+                  </a>
+              </div>
+
+              <nav>
+                <ul>
+                <li><a href="indexcustomer.xhtml">Home</a></li>
+                    <li><a href="indexcustomer.xhtml">Book Parking</a></li>
+                    <li><a href="indexcustomer.xhtml">View My Bookings</a></li>
+                    <li><a href="indexcustomer.xhtml">Search Parking</a></li>
+
+                    <!-- Show welcome and logout if logged in -->
+                    <h:panelGroup rendered="#{not empty customerLoginBean.loggedInUser}">
+                        <li style="color:white;">
+                            <i class="fa-solid fa-user"></i>
+                            Welcome, #{customerLoginBean.loggedInUser}
+                            <h:commandLink value="(Logout)" action="#{customerLoginBean.logout}" style="margin-left:10px; color:#f00;" />
+                        </li>
+                    </h:panelGroup>
+                    <div class="nav-actions">
+    <h:link outcome="view_cart" styleClass="cart-icon-container">
+        <i class="fas fa-shopping-cart"></i>
+        <span>Cart</span>
+        <h:outputText value="#{cartBean.cartItemCount}" 
+                      styleClass="cart-badge" 
+                      rendered="#{cartBean.cartItemCount > 0}" />
+    </h:link>
+</div>
+
+                    <!-- Show login link if not logged in -->
+                    <!--  <h:panelGroup rendered="#{empty customerLoginBean.loggedInUser}">
+                        <li><a href="reg.xhtml"><i class="fa-solid fa-user"></i>Welcome user </a></li>
+                    </h:panelGroup> -->
+                </ul>
+              </nav>
+          </div>
+      </div>
+
+      <!-- PAGE HEADER -->
+      <div class="about-header">
+          <h1>Customer Dashboard</h1>
+          <p>Welcome to your personal dashboard. From here you can manage your bookings.</p>
+      </div>
+    </div>
+
+</h:body>
+
+<!-- FOOTER PAYMENT METHODS -->
+<div class="footer-payment-methods" style="background:#fff; border-top:1px solid #ccc; padding:15px 20px;">
+    <div style="display:flex; align-items:center; justify-content:center; gap:10px;">
+        <span style="font-weight:bold; color:#000;">Online Payment Methods</span>
+        <a href="https://www.paypal.com" target="_blank" style="display:inline-block;">
+            <h:graphicImage library="images" name="PayPal-Logo.png" alt="PayPal" style="max-height:30px; width:auto; display:block;" />
+        </a>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    <div class="footer-container">
+        <div class="footer-section about">
+            <h3>About Us</h3>
+            <p>We provide top-quality parking solutions with easy booking and secure facilities in multiple cities.</p>
+        </div>
+
+        <div class="footer-section quick-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="Terms.xhtml">Terms &amp; Conditions</a></li>
+                <li><a href="index2.xhtml">Home</a></li>
+                <li><a href="index2.xhtml">Find Parking</a></li>
+                <li><a href="index2.xhtml">Pre-book</a></li>
+                <li><a href="cities.xhtml">Popular Cities</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section contact">
+            <h3>Contact</h3>
+            <p>Email: <a href="mailto:info@example.com">support@abcparking.com</a></p>
+            <p>Phone: +123 456 789</p>
+            <p>Address: Main Street, Dublin</p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2025 ABC Parking System. All Rights Reserved.</p>
+    </div>
+</div>
+
+</html>

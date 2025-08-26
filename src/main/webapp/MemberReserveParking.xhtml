@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+    <title>Manage Parking Space</title>
+    <h:outputStylesheet library="css" name="MemberReserveParking.css"/>
+    <style>
+        .msg       { margin:0 0 12px 0; padding:0; list-style:none; }
+        .msg-info  { background:#ecfdf5; border:1px solid #10b981; color:#065f46; padding:10px 12px; border-radius:6px; }
+        .msg-warn  { background:#fffbeb; border:1px solid #f59e0b; color:#7c2d12; padding:10px 12px; border-radius:6px; }
+        .msg-error { background:#fef2f2; border:1px solid #ef4444; color:#7f1d1d; padding:10px 12px; border-radius:6px; }
+        .msg-fatal { background:#f3e8ff; border:1px solid #8b5cf6; color:#4c1d95; padding:10px 12px; border-radius:6px; }
+    </style>
+</h:head>
+<h:body>
+    <div class="form-container">
+        <h1>Manage Parking Spaces</h1>
+
+        <h:form id="reserveForm">
+            <h:messages showSummary="true" showDetail="false"
+                        styleClass="msg"
+                        infoClass="msg-info"
+                        warnClass="msg-warn"
+                        errorClass="msg-error"
+                        fatalClass="msg-fatal"/>
+
+            <h:outputLabel for="space" value="Reserve Parking Space:"/>
+            <h:selectOneMenu id="space" value="#{reserveBean.space}">
+                <f:selectItem itemLabel="1" itemValue="1"/>
+                <f:selectItem itemLabel="2" itemValue="2"/>
+                <f:selectItem itemLabel="3" itemValue="3"/>
+            </h:selectOneMenu>
+
+            <h:outputLabel for="staffId" value="Staff ID:"/>
+            <h:inputText id="staffId" value="#{reserveBean.staffId}" required="true"/>
+
+            <h:outputLabel for="staffName" value="Staff Name:"/>
+            <h:inputText id="staffName" value="#{reserveBean.staffName}" required="true"/>
+
+            <div class="inline-group">
+                <div class="box-stack">
+                    <h:outputLabel for="fromDate" value="Reserve From:"/>
+                    <div class="stacked-fields">
+                        <h:inputText id="fromDate" value="#{reserveBean.fromDate}" pt:type="date" required="true"/>
+                        <h:inputText id="fromTime" value="#{reserveBean.fromTime}" pt:type="time" required="true"/>
+                    </div>
+                </div>
+                <div class="box-stack">
+                    <h:outputLabel for="toDate" value="Reserve Until:"/>
+                    <div class="stacked-fields">
+                        <h:inputText id="toDate" value="#{reserveBean.toDate}" pt:type="date" required="true"/>
+                        <h:inputText id="toTime" value="#{reserveBean.toTime}" pt:type="time" required="true"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-container" style="margin-top:12px">
+                <!-- Full postback; no <f:ajax> -->
+               <h:commandButton value="Update Reservation"
+                 action="#{reserveBean.updateReservation}"
+                 styleClass="green-btn" />
+
+            </div>
+            
+            <div class="button-container" style="margin-top:12px">
+                <!-- Full postback; no <f:ajax> -->
+               <h:commandButton value="Home"
+                 action="memberDashboard?faces-redirect=true"
+                 styleClass="green-btn" />
+            </div>
+        </h:form>
+    </div>
+</h:body>
+</html>

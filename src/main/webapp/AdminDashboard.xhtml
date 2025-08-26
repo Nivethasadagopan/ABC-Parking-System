@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+    <title>Management Page</title>
+    <h:outputStylesheet library="css" name="admin.css"/>
+</h:head>
+<h:body>
+
+<div class="background">
+    <!-- My Account dropdown -->
+    <div class="account-container" id="accountMenu">
+        <button class="account-btn" onclick="toggleDropdown()">MY ACCOUNT</button>
+        <div class="dropdown">
+            <!-- ✅ Corrected logout -->
+            <h:form>
+                <h:commandLink value="Logout" 
+                               action="#{adminLogin.logout}" 
+                               style="color: red; text-decoration: none;" />
+            </h:form>
+        </div>
+    </div>
+
+    <!-- Center Content -->
+    <div class="content">
+        <h:graphicImage library="images" name="Adminlogo.png" alt="Admin Logo" styleClass="logo"/>
+        <div class="btn-container">
+            <!-- ✅ use outcome without .xhtml -->
+            <h:link outcome="addmember" value="Add Member" styleClass="btn"/>
+            <h:link outcome="member-list" value="Monitor Member" styleClass="btn"/>
+        </div>
+    </div>
+
+    <!-- Bottom decoration image -->
+    <h:graphicImage library="images" name="Adminreg1.png" alt="Bottom Decoration" styleClass="bottom-img"/>
+</div>
+
+<!-- Info Section -->
+<section class="info-section">
+    <div class="info-container">
+        <h2>Welcome to Management Panel</h2>
+        <p>
+            Manage members, create parking slots, and oversee system settings 
+            all from one place. This panel is designed to give you full control 
+            with a clean and simple interface.
+        </p>
+        <p class="highlight">
+            For a limited time only, new admins get exclusive access to advanced tools 
+            and features. This offer is valid for the year 2025.
+        </p>
+    </div>
+</section>
+
+<script>
+    function toggleDropdown() {
+        document.getElementById("accountMenu").classList.toggle("show");
+    }
+
+    window.onclick = function(event) {
+        if (!event.target.matches('.account-btn')) {
+            document.querySelectorAll(".account-container").forEach(menu => {
+                menu.classList.remove("show");
+            });
+        }
+    }
+</script>
+
+</h:body>
+</html>

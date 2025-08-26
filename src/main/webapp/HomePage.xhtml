@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      lang="en">
+
+<h:head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ABC Parking</title>
+  <h:outputStylesheet name="css/home.css" />
+</h:head>
+
+<h:body>
+
+  <header>
+    <div class="container">
+      <div class="logo-container">
+        <img src="#{resource['images/logo1.png']}" alt="ABC Parking Logo" class="logo-img" />
+        <h1 class="logo-text">ABC Parking</h1>
+      </div>
+
+      <nav>
+        <ul class="nav-links">
+          <li><h:link value="Home" outcome="index" /></li>
+          <li><h:link value="About" outcome="about" /></li>
+          <li><h:link value="Login" outcome="login" /></li>
+          <li><h:link value="Register" outcome="register" /></li>
+          <li><h:link value="Contact Us" outcome="contact" /></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Smart, Secure Parking Near Dublin Airport</h2>
+      <p>Book, manage, and access parking spaces with ease. Whether you're a company, customer, or airport traveler – we’ve got you covered.</p>
+      <h:link outcome="getStarted" styleClass="cta-button" value="Get Started" />
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p> 2025 ABC Parking. All rights reserved.</p>
+    </div>
+  </footer>
+</h:body>
+</html>

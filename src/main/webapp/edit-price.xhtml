@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Edit Parking Space Prices</title>
+	<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: url("#{resource['images/Member Image.jpg']}") no-repeat center center/cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Dark overlay */
+body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 1;
+}
+
+/* Dark glass container */
+.container {
+    position: relative;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.85); /* dark background with opacity */
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    max-width: 600px;
+    width: 100%;
+    color: #fff;
+}
+
+h2 {
+    text-align: center;
+    color: #fff;
+    border-bottom: 2px solid #9acd32;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+table {
+    width: 100%;
+}
+td {
+    padding: 8px 6px;
+    color: #fff;
+    font-weight: bold;
+}
+
+input[type="text"], 
+input[type="number"], 
+select, 
+textarea {
+
+    width: 97%;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background: #f2f2f2;
+    color: #333;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+/* Save Button - Lime Green */
+.btn-primary {
+    background: #b6f135; /* lime green */
+    color: #000;
+}
+.btn-primary:hover {
+ 
+    background: #9acd32; /* darker lime */
+}
+
+/* Cancel Button - Light Gray */
+.btn-secondary {
+margin-left: 10px;
+    background: #cfd2d6;
+    color: #000;
+}
+.btn-secondary:hover {
+    background: #b0b3b8;
+}
+
+</style>
+</h:head>
+
+<h:body>
+	<f:metadata>
+		<f:viewAction action="#{parkingSpaceBean.initEditPrice}" />
+	</f:metadata>
+
+	<div class="container">
+		
+
+		<h2>Edit Parking Space Prices</h2>
+
+		<!-- Display messages -->
+		<h:messages globalOnly="true" styleClass="messages" />
+
+		<h:panelGroup rendered="#{not empty parkingSpaceBean.selectedSpace}">
+			<div class="space-info">
+				<h3>Space ##{parkingSpaceBean.selectedSpace.spaceNumber}</h3>
+				<p>
+					<strong>Address:</strong>
+					#{parkingSpaceBean.selectedSpace.address1}
+				</p>
+				<h:panelGroup
+					rendered="#{not empty parkingSpaceBean.selectedSpace.address2}">
+					<p>
+						<strong>Address Line 2:</strong>
+						#{parkingSpaceBean.selectedSpace.address2}
+					</p>
+				</h:panelGroup>
+				<p>
+					<strong>County:</strong> <span class="county-badge">#{parkingSpaceBean.selectedSpace.county}</span>
+				</p>
+				<p>
+					<strong>Current Price:</strong> <span class="current-price">
+						<h:outputText
+							value="#{parkingSpaceBean.selectedSpace.pricePerHour}">
+							<f:convertNumber type="currency" currencySymbol="€"
+								minFractionDigits="2" />
+						</h:outputText>
+					</span>
+				</p>
+			</div>
+
+			<h:form>
+				<div class="form-group">
+					<label for="newPrice">New Price per Hour (€):</label>
+					<h:inputText id="newPrice" value="#{parkingSpaceBean.newPrice}"
+						styleClass="form-control" required="true"
+						requiredMessage="Price is required">
+						<f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
+					</h:inputText>
+				</div>
+
+				<div class="form-group">
+					<h:commandButton value="Update Price"
+						action="#{parkingSpaceBean.updatePrice}"
+						styleClass="btn btn-primary" />
+					<h:commandButton value="Cancel"
+						action="#{parkingSpaceBean.cancelEditPrice}"
+						styleClass="btn btn-secondary" immediate="true" />
+				</div>
+			</h:form>
+		</h:panelGroup>
+
+		<h:panelGroup rendered="#{empty parkingSpaceBean.selectedSpace}">
+			<div class="space-info">
+				<p style="color: #dc3545;">Error: Parking space not found or not
+					selected.</p>
+				<a href="set-prices.xhtml" class="btn btn-secondary">Back to
+					Pricing List</a>
+			</div>
+		</h:panelGroup>
+
+
+	</div>
+</h:body>
+</html>

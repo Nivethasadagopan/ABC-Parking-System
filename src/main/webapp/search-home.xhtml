@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Parking Spaces List</title>
+
+    <style>
+       /* ✅ General page */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4;
+}
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* ✅ Header */
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    border-radius: 8px 8px 0 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* ✅ DataTable */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.table-header th {
+    background-color: #f8f9fa;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+    font-weight: bold;
+    color: #333;
+}
+
+.table-row td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+}
+
+.table-row:nth-child(even) {
+    background-color: #fafafa;
+}
+
+/* ✅ Address column */
+.address-cell {
+    display: flex;
+    flex-direction: column;
+}
+
+.address-line1 {
+    font-weight: bold;
+    color: #333;
+}
+
+.address-line2 {
+    font-size: 13px;
+    color: #777;
+}
+
+.county-badge {
+    background-color: #007bff;
+    color: white;
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+/* ✅ Price column */
+.price-cell {
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* ✅ Status column */
+.status-available {
+    color: green;
+    font-weight: bold;
+}
+
+.status-occupied {
+    color: red;
+    font-weight: bold;
+}
+
+/* ✅ Feature badges */
+.feature-badge {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    color: white;
+    font-weight: bold;
+}
+
+.feature-accessible {
+    background-color: #6f42c1; /* purple */
+}
+
+.feature-bus {
+    background-color: #fd7e14; /* orange */
+}
+
+.feature-none {
+    color: #aaa;
+    font-size: 13px;
+}
+
+/* ✅ Buttons */
+.btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-success:hover {
+    opacity: 0.9;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* ✅ Summary info */
+.summary-info {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.summary-item {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    width: 30%;
+}
+
+.summary-number {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.summary-label {
+    font-size: 13px;
+    color: #666;
+}
+
+/* ✅ Footer */
+footer {
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    border-radius: 0 0 8px 8px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+	</style>
+</h:head>
+
+<h:body>
+	<div class="container">
+		<header>
+			<div class="header-title">
+				<i class="fas fa-parking"></i> <span>ABC Parking Management</span>
+			</div>
+		</header>
+
+		<h2>Parking Spaces Management</h2>
+
+		<!-- Display messages -->
+		<h:messages globalOnly="true" styleClass="messages" />
+
+		<div class="button-group">
+			<h:link value="Add New Parking Space" outcome="add-parking"
+				styleClass="btn btn-primary" />
+		</div>
+
+		<h:form>
+			<h:panelGroup rendered="#{not empty parkingSpaceBean.parkingSpaces}">
+				<h:dataTable value="#{parkingSpaceBean.parkingSpaces}" var="space"
+					styleClass="table" headerClass="table-header"
+					rowClasses="table-row">
+
+					<!-- Removed Space Number + Reserved columns -->
+
+					<h:column>
+						<f:facet name="header">Address</f:facet>
+						<div class="address-cell">
+							<div class="address-line1">
+								<h:outputText value="#{space.address1}" />
+							</div>
+							<h:panelGroup rendered="#{not empty space.address2}">
+								<div class="address-line2">
+									<h:outputText value="#{space.address2}" />
+								</div>
+							</h:panelGroup>
+							<div class="county-badge">
+								<h:outputText value="#{space.county}" />
+							</div>
+						</div>
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Price per Hour</f:facet>
+						<h:outputText value="#{space.pricePerHour}"
+							styleClass="price-cell">
+							<f:convertNumber type="currency" currencySymbol="€"
+								minFractionDigits="2" />
+						</h:outputText>
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Status</f:facet>
+						<h:outputText
+							value="#{space.available ? 'Available' : 'Occupied'}"
+							styleClass="#{space.available ? 'status-available' : 'status-occupied'}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Accessible</f:facet>
+						<div class="features-cell">
+							<h:panelGroup rendered="#{space.accessibleParking}">
+								<span class="feature-badge feature-accessible">
+									Accessible </span>
+							</h:panelGroup>
+							<h:panelGroup rendered="#{not space.accessibleParking}">
+								<span class="feature-none">No</span>
+							</h:panelGroup>
+						</div>
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Near Bus</f:facet>
+						<div class="features-cell">
+							<h:panelGroup rendered="#{space.closeToBus}">
+								<span class="feature-badge feature-bus"> Near Bus </span>
+							</h:panelGroup>
+							<h:panelGroup rendered="#{not space.closeToBus}">
+								<span class="feature-none">No</span>
+							</h:panelGroup>
+						</div>
+					</h:column>
+
+					<!-- ✅ Replaced Update/Delete with Book link -->
+					<h:column>
+						<f:facet name="header">Action</f:facet>
+						<h:link value="Book" outcome="book-parking"
+							styleClass="btn btn-success">
+							<f:param name="spaceId" value="#{space.id}" />
+						</h:link>
+					</h:column>
+
+				</h:dataTable>
+
+				<div class="summary-info">
+					<div class="summary-item">
+						<div class="summary-number">#{parkingSpaceBean.parkingSpaces.size()}</div>
+						<div class="summary-label">Total Spaces</div>
+					</div>
+					<div class="summary-item">
+						<div class="summary-number" style="color: #28a745;">
+							<h:outputText
+								value="#{parkingSpaceBean.parkingSpaces.stream().filter(s -> s.available).count()}" />
+						</div>
+						<div class="summary-label">Available</div>
+					</div>
+					<div class="summary-item">
+						<div class="summary-number" style="color: #dc3545;">
+							<h:outputText
+								value="#{parkingSpaceBean.parkingSpaces.stream().filter(s -> !s.available).count()}" />
+						</div>
+						<div class="summary-label">Occupied</div>
+					</div>
+				</div>
+			</h:panelGroup>
+
+			<h:panelGroup rendered="#{empty parkingSpaceBean.parkingSpaces}">
+				<div class="empty-message">
+					<p>No parking spaces have been added yet.</p>
+					<h:link value="Add your first parking space" outcome="add-parking"
+						styleClass="btn btn-primary" />
+				</div>
+			</h:panelGroup>
+		</h:form>
+
+		<div style="text-align: center; margin-top: 20px;">
+			<a href="index.xhtml" class="btn btn-secondary">Home</a>
+		</div>
+
+		<footer>
+			<i class="fas fa-parking"></i> <span>ABC Booking System – ©
+				2025</span>
+		</footer>
+	</div>
+</h:body>
+</html>

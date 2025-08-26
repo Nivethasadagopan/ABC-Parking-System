@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ABC Parking System</title>
+
+    <!-- Backend-aware resource loading -->
+    <link rel="stylesheet" href="#{resource['css/styles.css']}" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+
+    <!-- Hero Section with Transparent Fixed Header -->
+    <section class="hero-section">
+        <div class="main-header">
+            <div class="header-container">
+ <div class="logo">
+  <a href="index2.xhtml">
+    <!-- Default logo before scroll -->
+    <img src="resources/images/ABC_logo1.png" alt="ABC Parking Logo" class="logo-before" />
+
+    <!-- Logo after scroll -->
+    <img src="resources/images/ABC_logo.png" alt="ABC Parking Logo" class="logo-after" />
+  </a>
+</div>
+                <div class="menu-toggle"><i class="fa fa-bars"></i></div>
+                <nav>
+                    <ul>
+                        <li><a href="index2.xhtml">Home</a></li>
+                        <li><a href="cities.xhtml">Parking</a></li>
+                       <!--  <li><a href="book-parking.xhtml">Parking</a></li> -->
+                         <li><a href="products.xhtml">Products</a></li>
+                        <!-- <li><a href="parking-list.xhtml">Products</a></li> -->
+                        <li><a href="aboutus.xhtml">About Us</a></li>
+                        <li>
+                            <a href="customerLogin.xhtml"><i class="fa-solid fa-user"></i> Logout </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Hero text -->
+        <div class="hero-text">
+            <h1>Parking in Ireland</h1>
+        </div>
+    </section>
+
+<section class="booking-container">
+    <div class="booking-tabs">
+        <div class="tab active" data-tab="search">
+            <i class="fas fa-car"></i> Search parking
+        </div>
+        <div class="tab" data-tab="prebook">
+            <i class="fas fa-ticket-alt"></i> Pre-booking
+        </div>
+    </div>
+
+    <!-- Search Parking Content -->
+    <div class="tab-content active" id="search">
+        <p>Where do you want to go? (Choose a city)</p>
+        <div class="form-row" style="display: flex; gap: 10px; align-items: center;">
+            <!-- Styled Dropdown -->
+            <select style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                <option value="" disabled="disabled" selected="selected">Select a city</option>
+                <option value="dublin">Dublin</option>
+                <option value="skerries">Skerries</option>
+                <option value="malahide">Malahide</option>
+                <option value="swords">Swords</option>
+            </select>
+
+            <a href="search-parking.xhtml">
+                <button type="button" class="map-btn" style="margin-top: 15px; border: none; border-radius: 6px; background: #8bb611; color: #fff; font-weight: bold; cursor: pointer; white-space: nowrap;">
+                    Search Parking
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <!-- Pre-booking Content -->
+    <div class="tab-content" id="prebook">
+        <p>Where do you want to go? (Choose a city)</p>
+        <!-- Styled Dropdown -->
+        <select style="width: 100%; margin-bottom: 15px; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+            <option value="" disabled="disabled" selected="selected">Select a city</option>
+            <option value="dublin">Dublin</option>
+            <option value="skerries">Skerries</option>
+            <option value="malahide">Malahide</option>
+            <option value="swords">Swords</option>
+        </select>
+
+        <div class="form-row">
+            <!-- Arrival -->
+            <div class="datetime-group">
+                <label>Select your arrival date and time</label>
+                <div class="inputs">
+                    <input type="text" onfocus="this.type='date'" placeholder="dd/mm/yyyy" class="date-input" />
+                    <input type="text" onfocus="this.type='time'" placeholder="hh:mm" class="time-input" />
+                </div>
+            </div>
+
+            <!-- Departure -->
+            <div class="datetime-group">
+                <label>Select your departure date and time</label>
+                <div class="inputs">
+                    <input type="text" onfocus="this.type='date'" placeholder="dd/mm/yyyy" class="date-input" />
+                    <input type="text" onfocus="this.type='time'" placeholder="hh:mm" class="time-input" />
+                </div>
+            </div>
+
+            <a href="search-parking.xhtml">
+                <button type="submit" class="search-btn" style="margin-bottom: 15px;">Search</button>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+
+    <!-- Popular Cities -->
+    <section class="popular-cities">
+        <div class="cities-header">
+            <h2>Popular cities Nearby Airport</h2>
+            <a href="cities.xhtml">Discover all cities</a>
+        </div>
+        <div class="cities-grid">
+            <div class="city-card" style="background-image: url('resources/images/Dublin.jpg');">
+                <span>Dublin</span>
+            </div>
+            <div class="city-card" style="background-image: url('resources/images/skerries.jpg');">
+                <span>Skerries</span>
+            </div>
+            <div class="city-card" style="background-image: url('resources/images/malahide.jpg');">
+                <span>Malahide</span>
+            </div>
+            <div class="city-card" style="background-image: url('resources/images/swords.jpg');">
+                <span>Swords</span>
+            </div>
+        </div>
+    </section>
+    
+    
+<section class="promo-section" style="
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background: url('https://q-park-online-prod.azureedge.net/-/media/images/contentblock-images/qpark-uk/goflexi/goflexi-home-banner.jpg?rev=31ef8f63-ec26-488f-b152-ffa06fd01d9e&amp;mw=1920&amp;hash=329309AEE5180D3B41B64BDD0CDE5C3B') 
+                no-repeat center center;
+    background-size: cover;
+    color: white;
+    padding: 50px;
+    min-height: 350px;
+    position: relative;
+">
+
+    <!-- Gradient overlay -->
+    <div style="
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: 
+            linear-gradient(to right, rgba(28,34,48,0.95) 40%, rgba(0,0,0,0) 70%), /* left fade */
+            linear-gradient(to left, rgba(0,0,0,0.4) 5%, rgba(0,0,0,0) 25%);      /* right fade */
+        z-index: 0;
+    "></div>
+
+    <!-- Content -->
+    <div style="position: relative; z-index: 1; max-width: 500px;">
+        <h2 style="font-weight: bold; font-size: 1.8em; margin-bottom: 15px;">Free Hours When You Go Flexi!</h2>
+        <p style="margin-bottom: 20px; line-height: 1.5;">
+            Purchase a 90hr or 120hr flexi Premier Card and you'll receive a discount worth up to 10 hours! 
+            Your parking just got even more convenient, and even more cost-effective.
+        </p>
+
+        <a href="LearnMore.xhtml" style="
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #8cc63f;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 3px;
+        ">Learn More</a>
+    </div>
+</section>
+
+
+<!-- ABC Services Section -->
+<section class="services-section">
+  <h2>ABC Services</h2>
+  <div class="services-wrapper">
+    <!-- Left Button -->
+    <button class="slide-btn left">&#10094;</button>
+
+    <!-- Cards Container -->
+    <div class="services-slider">
+      <div class="service-card">
+        <img src="resources/images/EV Parking.png" alt="Electric Vehicle Charging" />
+        <div class="service-content">
+          <h3>Electric Vehicle Charging</h3>
+          <p>ABC provide charging points in major cities across the country including Dublin, Skerries, Malahide, Swords &amp; more.</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <img src="resources/images/premiumcard2.png" alt="Premier Cards" />
+        <div class="service-content">
+          <h3>Premier Cards</h3>
+          <p>Do you need regular city centre parking? With a ABC Premier Card, you can get up to 50% off your parking!</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <img src="resources/images/happy.jpg" alt="Q-Park App" />
+        <div class="service-content">
+          <h3>ABC Parking App </h3>
+          <p>Pre-book or use pay-as-you-go with the ABC app. Parking just got even easier.</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <img src="resources/images/SecureParking2.png" alt="Secure Parking" />
+        <div class="service-content">
+          <h3>Secure Parking</h3>
+          <p>All ABC Parking facilities are safe, secure, and monitored 24/7 for your peace of mind.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Button -->
+    <button class="slide-btn right">&#10095;</button>
+  </div>
+</section>
+
+<!-- FOOTER PAYMENT METHODS -->
+
+<div class="footer-payment-methods" style="background:#fff; border-top:1px solid #ccc; padding:15px 20px;">
+    <div style="display:flex; align-items:center; justify-content:center; gap:10px;">
+        <span style="font-weight:bold; color:#000;">Online Payment Methods</span>
+        <a href="https://www.paypal.com" target="_blank" style="display:inline-block;">
+            <img src="resources/images/PayPal-Logo.png" alt="PayPal"
+                 style="max-height:30px; width:auto; display:block;" />
+        </a>
+    </div>
+</div>
+
+
+    <!-- Footer -->
+    <div class="site-footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <p>We provide top-quality parking solutions with easy booking and secure facilities in multiple cities.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+               <ul>
+                    <li><a href="Terms.xhtml">Terms &amp; Conditions</a></li>
+                    <li><a href="index2.xhtml">Home</a></li>
+                    <li><a href="search-parking.xhtml">Find Parking</a></li>
+                    <li><a href="index2.xhtml">Pre-book</a></li>
+                    <li><a href="cities.xhtml">Popular Cities</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li>Email: support@abcparking.com</li>
+                    <li>Phone: +123 456 789</li>
+                    <li>Address: Main Street, Dublin</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ABC Parking System. All Rights Reserved.</p>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script type="text/javascript">
+        // Header scroll effect
+        window.addEventListener('scroll', function () {
+            var header = document.querySelector('.main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Booking tabs switcher
+  document.querySelectorAll('.booking-tabs .tab').forEach(function (tab) {
+    tab.addEventListener('click', function () {
+        // Remove active from all tabs
+        document.querySelectorAll('.booking-tabs .tab').forEach(function (t) {
+            t.classList.remove('active');
+        });
+        // Activate clicked tab
+        tab.classList.add('active');
+
+        // Hide all content
+        document.querySelectorAll('.tab-content').forEach(function (content) {
+            content.classList.remove('active');
+        });
+        // Show selected content
+        var selectedTab = tab.getAttribute('data-tab');
+        document.getElementById(selectedTab).classList.add('active');
+    });
+});
+
+        // Mobile menu toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function () {
+            document.querySelector('nav ul').classList.toggle('showing');
+        });
+        
+        
+        
+        const slider = document.querySelector('.services-slider');
+        const leftBtn = document.querySelector('.slide-btn.left');
+        const rightBtn = document.querySelector('.slide-btn.right');
+
+        const card = document.querySelector('.service-card');
+        const cardWidth = card.offsetWidth + 25; // card width + gap
+
+        rightBtn.addEventListener('click', () => {
+          slider.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        });
+
+        leftBtn.addEventListener('click', () => {
+          slider.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+        });
+        
+        
+    </script>
+
+</body>
+</html>

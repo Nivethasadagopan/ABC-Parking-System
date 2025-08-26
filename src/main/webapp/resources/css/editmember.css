@@ -1,0 +1,145 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Background with overlay */
+.background {
+    position: fixed;  /* stays fixed behind everything */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("#{resource['images/Adminreg.png']}") no-repeat center top/cover;
+    z-index: 0;  /* keep above default body, below content */
+}
+
+.background::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 0;
+}
+
+/* Form Wrapper (similar to table-wrapper) */
+.form-wrapper {
+    position: relative;
+    z-index: 2;  /* ensures form & buttons stay clickable */
+    padding: 40px;
+    max-width: 600px;
+    margin: 100px auto;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
+    color: #fff;
+    text-align: center;
+}
+
+/* Title */
+.form-wrapper h2 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    color: #fff;
+}
+
+/* Form rows */
+.form-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-row label {
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #fff;
+}
+
+.form-row input {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 16px;
+}
+
+/* Placeholder color */
+.form-row input::placeholder {
+    color: rgba(255,255,255,0.7);
+}
+
+/* Buttons */
+.btn-update,
+.btn-cancel {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 10px 8px;
+    font-size: 16px;
+    transition: 0.3s ease;
+}
+
+.btn-update {
+    background: #17a2b8;
+    color: #fff;
+}
+
+.btn-update:hover {
+    background: #138496;
+}
+
+.btn-cancel {
+    background: #dc3545;
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn-cancel:hover {
+    background: #c82333;
+}
+
+/* Responsive */
+@media(max-width:768px) {
+    .form-wrapper {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .form-wrapper h2 {
+        font-size: 24px;
+    }
+
+    .form-row input {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .btn-update, .btn-cancel {
+        width: 100%;
+        margin: 8px 0;
+    }
+}
+/* Logo positioning */
+.logo-container {
+    position: absolute;
+    top: 20px;   /* distance from top */
+    left: 25px;  /* distance from left */
+    z-index: 2;
+}
+
+.logo {
+    width: 140px;   /* adjust size if needed */
+    height: auto;
+}

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+    <title>Cities List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="#{resource['css/header.css']}" type="text/css"/>
+    <link rel="stylesheet" href="#{resource['css/footer.css']}" type="text/css"/>
+    <link rel="stylesheet" href="#{resource['css/cities.css']}" type="text/css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <style>
+        /* Sticky footer fix */
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .all-cities {
+            flex: 1; /* pushes footer down */
+        }
+
+        .footer {
+            margin-top: auto; /* keeps footer stuck at bottom */
+        }
+    </style>
+</h:head>
+
+<h:body>
+
+    <!-- HEADER -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index2.xhtml">
+                    <h:graphicImage library="images" name="ABC_logo.png" alt="ABC Parking Logo"/>
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index2.xhtml">Home</a></li>
+                    <li><a href="cities.xhtml">Parking</a></li>
+                    <li><a href="products.xhtml">Products</a></li>
+                    <li><a href="aboutus.xhtml">About Us</a></li>
+                    <li><a href="reg.xhtml"><i class="fa-solid fa-user"></i> Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <!-- All Cities Section -->
+    <section class="all-cities">
+        <!-- Search Bar -->
+        <div class="city-search">
+            <i class="fa fa-search"></i>
+            <input type="text" id="citySearch" placeholder="Search a city" />
+        </div>
+
+        <!-- Alphabet Filter -->
+        <div class="city-alphabet">
+            <span class="alpha active" data-letter="ALL">All</span>
+            <span class="alpha" data-letter="D">D</span>
+            <span class="alpha" data-letter="S">S</span>
+            <span class="alpha" data-letter="M">M</span>
+            <span class="alpha" data-letter="G">G</span>
+            <span class="alpha" data-letter="L">L</span>
+        </div>
+
+        <!-- Cities List -->
+        <div class="cities-list">
+        
+            <!-- <div class="city-group" data-letter="B">
+                <h3>B</h3>
+                <div class="city-card">
+                    <img src="resources/images/skerries.jpg" alt="Bray" />
+                    <div class="city-info">
+                        <h4>Bray</h4>
+                        <p>1 facilities</p>
+                    </div>
+                </div>
+            </div> -->
+            
+ 
+ 
+             <div class="city-group" data-letter="D">
+                <h3>D</h3>
+                <div class="city-card">
+                    <img src="resources/images/Dublin.jpg" alt="Dublin" />
+                    <div class="city-info">
+                        <h4>Dublin</h4>
+                        <p>5 facilities</p>
+                    </div>
+                </div>
+            </div>
+            <div class="city-group" data-letter="S">
+                <h3>S</h3>
+                <div class="city-card">
+                    <img src="resources/images/skerries.jpg" alt="Skerries" />
+                    <div class="city-info">
+                        <h4>Skerries</h4>
+                        <p>4 facilities</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="city-group" data-letter="M">
+                <h3>M</h3>
+                <div class="city-card">
+                    <img src="resources/images/malahide.jpg" alt="Malahide" />
+                    <div class="city-info">
+                        <h4>Malahide</h4>
+                        <p>3 facilities</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="city-group" data-letter="S">
+                <h3>S</h3>
+                <div class="city-card">
+                    <img src="resources/images/swords.jpg" alt="Swords" />
+                    <div class="city-info">
+                        <h4>Swords</h4>
+                        <p>2 facilities</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FOOTER PAYMENT METHODS -->
+    <div class="footer-payment-methods" style="background:#fff; border-top:1px solid #ccc; padding:15px 20px;">
+        <div style="display:flex; align-items:center; justify-content:center; gap:10px;">
+            <span style="font-weight:bold; color:#000;">Online Payment Methods</span>
+            <a href="https://www.paypal.com" target="_blank" style="display:inline-block;">
+                <h:graphicImage library="images" name="PayPal-Logo.png" alt="PayPal" style="max-height:30px; width:auto; display:block;" />
+            </a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <div class="footer-container">
+            
+            <div class="footer-section about">
+                <h3>About Us</h3>
+                <p>We provide top-quality parking solutions with easy booking and secure facilities in multiple cities.</p>
+            </div>
+
+            <div class="footer-section quick-links">
+                <h3>Quick Links</h3>
+               <ul>
+                    <li><a href="Terms.xhtml">Terms &amp; Conditions</a></li>
+                    <li><a href="index2.xhtml">Home</a></li>
+                    <li><a href="index2.xhtml">Find Parking</a></li>
+                    <li><a href="index2.xhtml">Pre-book</a></li>
+                    <li><a href="cities.xhtml">Popular Cities</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section contact">
+                <h3>Contact</h3>
+                <p>Email: <a href="mailto:info@example.com">support@abcparking.com</a></p>
+                <p>Phone: +123 456 789</p>
+                <p>Address: Main Street, Dublin</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 ABC Parking System. All Rights Reserved.</p>
+        </div>
+    </div>
+
+
+    <!-- FILTER SCRIPT -->
+    <script type="text/javascript">
+        const alphas = document.querySelectorAll('.city-alphabet .alpha');
+        const groups = document.querySelectorAll('.city-group');
+        const searchInput = document.getElementById('citySearch');
+
+        // Alphabet Filter
+        alphas.forEach(alpha => {
+            alpha.addEventListener('click', function() {
+                // Reset active state
+                alphas.forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
+
+                let letter = this.getAttribute('data-letter');
+
+                if (letter === "ALL") {
+                    groups.forEach(group => group.style.display = "block");
+                } else {
+                    groups.forEach(group => {
+                        if (group.getAttribute('data-letter') === letter) {
+                            group.style.display = "block";
+                        } else {
+                            group.style.display = "none";
+                        }
+                    });
+                }
+
+                // Clear search when filtering by letter
+                searchInput.value = "";
+            });
+        });
+
+        // Search Cities
+        searchInput.addEventListener('keyup', function() {
+            let value = this.value.toLowerCase();
+
+            if (value === "") {
+                // If search is empty, restore all groups + all cards
+                groups.forEach(group => {
+                    group.style.display = "block";
+                    group.querySelectorAll('.city-card').forEach(card => {
+                        card.style.display = "flex";
+                    });
+                });
+                return;
+            }
+
+            groups.forEach(group => {
+                let matchFound = false;
+
+                group.querySelectorAll('.city-card').forEach(card => {
+                    let city = card.querySelector('h4').innerText.toLowerCase();
+                    if (city.includes(value)) {
+                        card.style.display = "flex";
+                        matchFound = true;
+                    } else {
+                        card.style.display = "none";
+                    }
+                });
+
+                // Show group only if any card matches
+                group.style.display = matchFound ? "block" : "none";
+            });
+        });
+    </script>
+
+</h:body>
+</html>

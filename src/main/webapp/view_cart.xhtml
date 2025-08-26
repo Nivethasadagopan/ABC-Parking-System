@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Your Cart - ABC Parking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;  /* Remove any default margin */
+            padding: 0;
+            background: url("resources/images/Member Image.jpg") no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;  /* Horizontally center */
+            align-items: center;  /* Vertically center */
+            height: 100vh;  /* Make sure the body takes full viewport height */
+        }
+
+        #container {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            margin: 20px;  /* Optional: You can adjust this for spacing */
+            width: 100%;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 15px;
+            border-radius: 8px 8px 0 0;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        header .header-title {
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        header .header-title i {
+            color: white;
+        }
+
+        .cart-container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .actions {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 16px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-remove {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-checkout {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-clear {
+            background-color: #ffc107;
+            color: black;
+        }
+
+        .empty-message {
+            text-align: center;
+            padding: 20px;
+            font-size: 1.1em;
+            color: #777;
+        }
+
+        footer {
+            background-color: #8bb611;
+            color: white;
+            padding: 15px;
+            border-radius: 0 0 8px 8px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            #container {
+                padding: 15px;
+                margin: 10px;
+            }
+
+            .cart-container {
+                padding: 20px;
+                max-width: 100%;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+
+            .actions {
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            .btn {
+                font-size: 0.9rem;
+                padding: 8px 12px;
+            }
+
+            th, td {
+                padding: 8px 10px;
+            }
+
+            .empty-message {
+                padding: 15px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .btn {
+                font-size: 0.8rem;
+                padding: 6px 10px;
+            }
+
+            .cart-container {
+                padding: 15px;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            header .header-title {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <div id="container">
+        <header>
+            <div class="header-title">
+                <i class="fas fa-parking"></i> <span>ABC Parking Management</span>
+            </div>
+        </header>
+
+        <main>
+            <div class="cart-container">
+                <h2>Your Cart</h2>
+
+                <!-- Display messages -->
+                <h:messages globalOnly="true" style="color: red; margin-bottom: 15px;" />
+
+                <h:form>
+                    <!-- Table to show the items in the cart -->
+                    <h:dataTable value="#{cartBean.cartItems}" var="item" rendered="#{not empty cartBean.cartItems}">
+                        <h:column>
+                            <f:facet name="header">Space</f:facet>
+                            #{item.parkingSpace.spaceNumber}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Address</f:facet>
+                            #{item.parkingSpace.address1}, #{item.parkingSpace.county}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">From</f:facet>
+                            <h:outputText value="#{item.bookingStart}">
+                                <f:convertDateTime pattern="dd-MM-yyyy HH:mm" />
+                            </h:outputText>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">To</f:facet>
+                            <h:outputText value="#{item.bookingEnd}">
+                                <f:convertDateTime pattern="dd-MM-yyyy HH:mm" />
+                            </h:outputText>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Action</f:facet>
+                            <h:commandButton value="Remove" action="#{cartBean.removeFromCart(item)}" styleClass="btn btn-remove" />
+                        </h:column>
+                    </h:dataTable>
+
+                    <!-- Empty Cart Message -->
+                    <h:panelGroup rendered="#{empty cartBean.cartItems}">
+                        <div class="empty-message">Your cart is empty.</div>
+                    </h:panelGroup>
+
+                    <!-- Cart Action Buttons -->
+                    <div class="actions" rendered="#{not empty cartBean.cartItems}">
+                        <h:commandButton value="Clear Cart" action="#{cartBean.clearCart}" styleClass="btn btn-clear" />
+                        <h:commandButton value="Checkout" action="#{cartBean.checkout}" styleClass="btn btn-checkout" />
+                    </div>
+                </h:form>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+</h:body>
+
+</html>

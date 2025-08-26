@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xml:lang="en" lang="en">
+
+<h:head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQs - ABC Parking System</title>
+
+  <!-- Keep your existing shared CSS for header/footer -->
+  <link rel="stylesheet" href="#{resource['css/header.css']}" type="text/css" />
+  <link rel="stylesheet" href="#{resource['css/footer.css']}" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Page-specific CSS (inline) -->
+  <style type="text/css">
+    .faq-section {
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: 120px auto 50px auto; /* leave space for sticky header */
+      background: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+    .breadcrumb {
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+      color: #666;
+    }
+    .breadcrumb a { color: #7ac943; text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    .faq-section h1 {
+      text-align: center;
+      margin: 10px 0 28px;
+      font-size: 28px;
+      color: #222;
+    }
+
+    .faq-container {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .faq-item {
+      background: #fff;
+      border: 1px solid #e6e6e6;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    /* Question as a button for accessibility and easy expansion later */
+    .faq-q {
+      width: 100%;
+      text-align: left;
+      background: #f7f7f7;
+      border: 0;
+      padding: 16px 18px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #333;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background .25s ease;
+    }
+    .faq-q:hover { background: #efefef; }
+    .faq-q i { color: #8bb611; }
+
+    .faq-a {
+      padding: 0 18px 16px 18px;
+      color: #555;
+      line-height: 1.6;
+      font-size: .96rem;
+    }
+
+    /* Optional: simple accordion behavior via CSS class (if you add JS later) */
+    .faq-item.active .faq-a { display: block; }
+    .faq-a { display: block; } /* show answers by default */
+
+    /* Payment strip helper (optional spacing) */
+    .footer-payment-methods {
+      margin-top: 30px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .faq-section { margin: 100px 12px 40px; padding: 18px 14px; }
+      .faq-q { padding: 14px; }
+      .faq-a { padding: 0 14px 14px; }
+    }
+  </style>
+</h:head>
+
+<h:body>
+
+  <!-- HEADER (kept the same) -->
+  <div class="main-header">
+    <div class="header-container">
+      <div class="logo">
+        <a href="index2.xhtml">
+          <h:graphicImage library="images" name="ABC_logo.png" alt="ABC Parking Logo" />
+        </a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index2.xhtml">Home</a></li>
+          <li><a href="cities.xhtml">Parking</a></li>
+          <li><a href="products.xhtml">Products</a></li>
+          <li><a href="aboutus.xhtml">About Us</a></li>
+          <li><a href="reg.xhtml"><i class="fa-solid fa-user"></i> Login </a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <!-- FAQ SECTION -->
+  <section class="faq-section">
+    <div class="breadcrumb">
+      <a href="index2.xhtml">ABC-Parking Ireland</a> / <span>FAQs</span>
+    </div>
+
+    <h1>Frequently Asked Questions</h1>
+
+    <div class="faq-container">
+
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>How do I book a parking space?</span>
+          <i class="fa-solid fa-circle-question"></i>
+        </button>
+        <div class="faq-a">
+          <p>You can search for available spaces, select your time slot, and pay securely online.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>Can I cancel or change my booking?</span>
+          <i class="fa-solid fa-arrow-rotate-left"></i>
+        </button>
+        <div class="faq-a">
+          <p>Yes, cancellations are allowed before check-in time for a refund.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>What payment methods are accepted?</span>
+          <i class="fa-brands fa-cc-paypal"></i>
+        </button>
+        <div class="faq-a">
+          <p>We accept PayPal payment option.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>Do I have to pay a booking fee?</span>
+          <i class="fa-solid fa-user-check"></i>
+        </button>
+        <div class="faq-a">
+          <p>We're happy to tell you no booking fees apply.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>What if I don't receive a booking confirmation?</span>
+          <i class="fa-solid fa-square-plus"></i>
+        </button>
+        <div class="faq-a">
+          <p>Please contact our Customer Service Team.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>Do I have to pay a fee to amend or cancel my booking?</span>
+          <i class="fa-solid fa-shield-halved"></i>
+        </button>
+        <div class="faq-a">
+          <p>There's no fee for changing or cancelling your booking.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PAYMENT METHODS (same) -->
+  <div class="footer-payment-methods" style="background:#fff; border-top:1px solid #ccc; padding:15px 20px;">
+    <div style="display:flex; align-items:center; justify-content:center; gap:10px;">
+      <span style="font-weight:bold; color:#000;">Online Payment Methods</span>
+      <a href="https://www.paypal.com" target="_blank" style="display:inline-block;">
+        <h:graphicImage library="images" name="PayPal-Logo.png" alt="PayPal"
+                        style="max-height:30px; width:auto; display:block;" />
+      </a>
+    </div>
+  </div>
+
+  <!-- FOOTER (same) -->
+  <div class="footer">
+    <div class="footer-container">
+      <div class="footer-section about">
+        <h3>About Us</h3>
+        <p>We provide top-quality parking solutions with easy booking and secure facilities in multiple cities</p>
+      </div>
+
+      <div class="footer-section quick-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="Terms.xhtml">Terms &amp; Conditions</a></li>
+          <li><a href="index2.xhtml">Home</a></li>
+          <li><a href="cities.xhtml">Find Parking</a></li>
+          <li><a href="index2.xhtml">Pre-book</a></li>
+          <li><a href="cities.xhtml">Popular Cities</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section contact">
+        <h3>Contact</h3>
+        <p>Email: <a href="mailto:support@abcparking.com"> support@abcparking.com</a></p>
+        <p>Phone: +123 456 789</p>
+        <p>Address: Main Street, Dublin</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 ABC Parking System. All Rights Reserved.</p>
+    </div>
+  </div>
+
+</h:body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>Update Parking Space</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: url("#{resource['images/Member Image.jpg']}") no-repeat center center/cover;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Dark overlay */
+        body::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: 1;
+        }
+
+        /* Glass container */
+        .container {
+            position: relative;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            max-width: 600px;
+            width: 100%;
+            color: #fff;
+        }
+
+        h2 {
+            text-align: center;
+            color: #fff;
+            border-bottom: 2px solid #9acd32;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+        }
+        td {
+            padding: 8px 6px;
+            color: #eee;
+            font-weight: bold;
+        }
+
+        input[type="text"], 
+        input[type="number"], 
+        select, 
+        textarea {
+            width: 90%;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            height: 80px;
+            resize: vertical;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #9acd32;
+            color: #000;
+        }
+        .btn-primary:hover {
+            background: #7fbf1f;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: #fff;
+        }
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <div class="container">
+        <h2>Update Parking Space</h2>
+
+        <h:messages globalOnly="true" style="color:#ff6666; text-align:center;" />
+
+        <h:form>
+            <table>
+                <tr>
+                    <td><h:outputLabel for="address1" value="Address Line 1" /></td>
+                    <td><h:inputText id="address1" value="#{parkingSpaceBean.selectedSpace.address1}" required="true" /></td>
+                </tr>
+
+                <tr>
+                    <td><h:outputLabel for="address2" value="Address Line 2" /></td>
+                    <td><h:inputText id="address2" value="#{parkingSpaceBean.selectedSpace.address2}" required="true" /></td>
+                </tr>
+
+                <tr>
+                    <td><h:outputLabel for="county" value="County" /></td>
+                    <td><h:inputText id="county" value="#{parkingSpaceBean.selectedSpace.county}" required="true" /></td>
+                </tr>
+
+              <tr>
+                    <td><h:outputLabel for="spaceNumber" value="Space Number" /></td>
+                    <td><h:inputText id="spaceNumber" value="#{parkingSpaceBean.selectedSpace.spaceNumber}" required="true" /></td>
+                </tr>
+
+                <tr>
+                    <td><h:outputLabel for="accessible" value="Accessible Parking" /></td>
+                    <td><h:selectBooleanCheckbox id="accessible" value="#{parkingSpaceBean.selectedSpace.accessibleParking}" /></td>
+                </tr>
+
+                <tr>
+                    <td><h:outputLabel for="busStop" value="Close to Bus Stop" /></td>
+                    <td><h:selectBooleanCheckbox id="busStop" value="#{parkingSpaceBean.selectedSpace.closeToBus}" /></td>
+                </tr>
+            </table>
+
+            <div class="actions">
+                <h:commandButton value="Save Changes" 
+                                 action="#{parkingSpaceBean.updateParkingSpace}" 
+                                 styleClass="btn btn-primary" />
+                <h:link value="Cancel" outcome="parking-list" styleClass="btn btn-secondary" />
+            </div>
+        </h:form>
+    </div>
+</h:body>
+</html>

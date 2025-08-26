@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="#{resource['css/style_datetime_gap.css']}" />
+    <link rel="stylesheet" href="#{resource['css/style_cities.css']}" />
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" />
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
+    <title><ui:insert name="title">ABC Parking System</ui:insert></title>
+</h:head>
+
+<h:body>
+
+    <div class="qpark-banner">
+        <div class="layout-wrapper">
+            <div class="banner-header">
+                <div class="header-left">
+                    <img class="logo" src="resources/images/logo.png" alt="ABC Parking Logo" />
+                </div>
+                <nav class="main-nav">
+                    <a href="book-parking.xhtml">Parking</a>
+                    <a href="parking-list.xhtml">Products</a>
+                    <a href="#">About Us</a>
+                    <a href="customerRegister.xhtml">Registration</a>
+                </nav>
+                <div class="nav-actions">
+                    <i class="fas fa-user-circle"></i>
+                    <div class="dropdown">
+                        <div class="dropdown-menu" id="loginMenu">
+                            <a href="customerLogin.xhtml">Customer Login</a>
+                            <a href="memberlogin.xhtml">Member Login</a>
+                            <a href="managementlogin.xhtml">Management Login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="page-content">
+        <ui:insert name="content">
+            </ui:insert>
+    </div>
+
+    <div class="container">
+        <footer>
+            <p>&#169; 2025 ABC Parking System</p>
+        </footer>
+    </div>
+
+</h:body>
+</html>

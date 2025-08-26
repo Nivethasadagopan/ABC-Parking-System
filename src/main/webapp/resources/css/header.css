@@ -1,0 +1,36 @@
+.main-header {
+    width: 100%;
+    background-color: white;
+    border-bottom: 2px solid #ff2e2e;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+}
+.logo img,
+.logo h\:graphicImage {
+    max-height: 60px;
+    width: auto;
+}
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+}
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+nav ul li a:hover {
+    color: #ff2e2e;
+}

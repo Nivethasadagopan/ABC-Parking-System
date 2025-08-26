@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Search Parking Space</title>
+
+	<!-- PrimeFaces resources will auto-load -->
+
+	<style>
+body {
+	font-family: Arial, sans-serif;
+	margin: 20px;
+	background-color: #f4f4f4;
+}
+
+#container {
+	background-color: white;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	max-width: 1000px;
+	margin: 0 auto;
+	position: relative;
+	/* Remove z-index conflicts */
+	z-index: 1;
+}
+
+/* Bright blue header */
+header {
+	background-color: #007bff;
+	color: white;
+	padding: 15px;
+	border-radius: 8px 8px 0 0;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+header .header-title {
+	font-size: 1.25rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+}
+
+header .header-title i {
+	color: white;
+}
+
+.booking-box h2 {
+	color: #333;
+	border-bottom: 2px solid #007bff;
+	padding-bottom: 10px;
+	margin-bottom: 20px;
+}
+
+.form-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-bottom: 15px;
+}
+
+.form-group {
+	flex: 1 1 45%;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	/* Ensure proper stacking for calendar popups */
+	z-index: auto;
+}
+
+.form-group.full-width {
+	flex: 1 1 100%;
+}
+
+label {
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+
+input[type="text"], input[type="number"], input[type="date"], input[type="time"]
+	{
+	padding: 8px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+/* Force calendar container positioning */
+.ui-calendar {
+	position: relative !important;
+	display: block !important;
+}
+
+.ui-calendar .ui-inputfield {
+	width: 100%;
+	padding: 8px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+/* Calendar button styling */
+.ui-calendar .ui-datepicker-trigger {
+	position: absolute;
+	right: 8px;
+	top: 50%;
+	transform: translateY(-50%);
+	border: none;
+	background: transparent;
+	cursor: pointer;
+	z-index: 1;
+}
+
+/* Override any PrimeFaces positioning that might interfere */
+body .ui-datepicker {
+	position: absolute !important;
+	z-index: 99999 !important;
+}
+
+body .ui-timepicker {
+	position: absolute !important;
+	z-index: 99999 !important;
+}
+
+/* Ensure form groups don't interfere with positioning */
+.form-group {
+	overflow: visible !important;
+}
+
+.book-button, .clear-button {
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 1rem;
+	margin: 10px 5px;
+	text-decoration: none;
+	display: inline-block;
+}
+
+.book-button {
+	background-color: #007bff;
+}
+
+.clear-button {
+	background-color: #6c757d;
+}
+
+.book-button:hover, .clear-button:hover {
+	opacity: 0.9;
+}
+
+.button-group {
+	text-align: center;
+	margin: 20px 0;
+}
+
+.links {
+	margin-top: 15px;
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+}
+
+.links a {
+	color: #007bff;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.links a:hover {
+	text-decoration: underline;
+}
+
+/* Bright blue footer */
+footer {
+	background-color: #007bff;
+	color: white;
+	padding: 15px;
+	border-radius: 0 0 8px 8px;
+	text-align: center;
+	margin-top: 20px;
+}
+
+footer i {
+	color: white;
+}
+
+/* Results table styling */
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+
+th, td {
+	padding: 12px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+th {
+	background-color: #f8f9fa;
+	font-weight: bold;
+	color: #333;
+}
+
+tr:hover {
+	background-color: #f5f5f5;
+}
+
+.status-available {
+	color: #28a745;
+	font-weight: bold;
+}
+
+.status-occupied {
+	color: #dc3545;
+	font-weight: bold;
+}
+
+.price-cell {
+	color: #007bff;
+	font-weight: bold;
+}
+
+.empty-message {
+	text-align: center;
+	color: #666;
+	font-style: italic;
+	padding: 40px;
+}
+
+.messages {
+	margin: 15px 0;
+	padding: 10px;
+	border-radius: 4px;
+}
+
+.messages .ui-messages-info {
+	background-color: #d1ecf1;
+	color: #0c5460;
+	border: 1px solid #bee5eb;
+}
+
+.messages .ui-messages-error {
+	background-color: #f8d7da;
+	color: #721c24;
+	border: 1px solid #f5c6cb;
+}
+
+/* Remove problematic z-index rules that were causing conflicts */
+main {
+	position: relative;
+}
+
+#searchForm {
+	position: relative;
+}
+
+footer {
+	position: relative;
+}
+</style>
+</h:head>
+
+<h:body>
+	<div id="container">
+		<header>
+			<div class="header-title">
+				<i class="fas fa-parking"></i> <span>ABC Parking Management</span>
+			</div>
+		</header>
+
+		<main>
+			<div class="booking-box">
+				<h2>Search Parking</h2>
+
+				<!-- Display messages -->
+				<h:messages globalOnly="true" styleClass="messages" />
+
+				<h:form id="searchForm">
+
+					<div class="form-row">
+						<div class="form-group full-width">
+							<h:outputLabel for="parking-name" value="Parking Space Name" />
+							<h:inputText id="parking-name"
+								value="#{searchParkingBean.parkingName}"
+								placeholder="e.g. A1, A2, B1..." />
+						</div>
+					</div>
+
+					<div class="form-row">
+						<div class="form-group full-width">
+							<h:outputLabel for="location-info" value="Search by Location" />
+							<h:inputText id="location-info"
+								value="#{searchParkingBean.locationInfo}"
+								placeholder="e.g. Dublin, Santry, Swords..." />
+						</div>
+					</div>
+
+					<div class="form-row">
+						<div class="form-group full-width">
+							<h:outputLabel for="price-range" value="Maximum Price (€)" />
+							<h:inputText id="price-range"
+								value="#{searchParkingBean.priceRange}"
+								placeholder="e.g. 1, 2, 5..." />
+						</div>
+					</div>
+
+					<div class="button-group">
+						<h:commandButton value="Search Parking Space →"
+							action="#{searchParkingBean.searchParkingSpaces}"
+							styleClass="book-button" />
+						<p:commandButton value="Clear Search"
+							actionListener="#{searchParkingBean.clearSearch}" process="@this"
+							update="@form" immediate="true" resetValues="true"
+							styleClass="clear-button" />
+
+					</div>
+				</h:form>
+
+				<!-- Search Results Section -->
+				<h:panelGroup rendered="#{searchParkingBean.searchPerformed}">
+					<h:panelGroup
+						rendered="#{not empty searchParkingBean.searchResults}">
+						<h2>Search Results</h2>
+						<h:dataTable value="#{searchParkingBean.searchResults}"
+							var="space" styleClass="table" headerClass="table-header"
+							rowClasses="table-row">
+
+							<h:column>
+								<f:facet name="header">Space Number</f:facet>
+								<h:outputText value="#{space.spaceNumber}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">Location</f:facet>
+								<h:outputText value="#{space.location}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">Price per Hour</f:facet>
+								<h:outputText value="#{space.price}" styleClass="price-cell">
+									<f:convertNumber type="currency" currencySymbol="€"
+										minFractionDigits="2" />
+								</h:outputText>
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">Status</f:facet>
+								<h:outputText
+									value="#{space.available ? 'Available' : 'Occupied'}"
+									styleClass="#{space.available ? 'status-available' : 'status-occupied'}" />
+							</h:column>
+
+						</h:dataTable>
+
+						<p style="margin-top: 20px; color: #666;">Found
+							#{searchParkingBean.searchResults.size()} parking space(s)</p>
+					</h:panelGroup>
+
+					<h:panelGroup rendered="#{empty searchParkingBean.searchResults}">
+						<div class="empty-message">
+							<p>No parking spaces found matching your search criteria.</p>
+						</div>
+					</h:panelGroup>
+				</h:panelGroup>
+
+				<div class="links">
+					<h:link value="Parking List" outcome="parking-list" />
+				</div>
+			</div>
+		</main>
+
+		<footer>
+			<i class="fas fa-parking"></i> <span>ABC Booking System – ©
+				2025</span>
+		</footer>
+	</div>
+</h:body>
+</html>

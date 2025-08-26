@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Booking Confirmation</title>
+	<link rel="stylesheet" href="resources/CSS/stylesheet.css" />
+	<style>
+.booking-details-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 10px;
+}
+
+.booking-details-table th, .booking-details-table td {
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+.booking-details-table th {
+	background-color: #f8f9fa;
+	font-weight: bold;
+}
+
+.total-section {
+	margin-top: 20px;
+	padding: 15px;
+	background-color: #f8f9fa;
+	border-radius: 5px;
+}
+</style>
+</h:head>
+<body>
+	<h:form>
+		<!-- Top Navigation Buttons -->
+		<div class="top-buttons">
+			<a href="index2.xhtml" class="button">Home</a>
+		</div>
+
+		<!-- Page Title -->
+		<div class="page-title">
+			<h1>Booking Confirmation</h1>
+		</div>
+
+		<!-- Confirmation Section -->
+		<div class="section-box">
+			<h2>Continue with PayPal.</h2>
+			<h2>Below are your booking details.</h2>
+		</div>
+
+		<!-- Check if cart has items -->
+		<h:panelGroup rendered="#{empty cartBean.cartItems}">
+			<div class="section-box">
+				<p>No bookings found in your cart.</p>
+				<a href="search-parking.xhtml" class="button">Back to Search</a>
+			</div>
+		</h:panelGroup>
+
+		<!-- Booking Details Section -->
+		<h:panelGroup rendered="#{not empty cartBean.cartItems}">
+			<div class="section-box">
+				<h2>Your Booking Details:</h2>
+
+				<table class="booking-details-table">
+					<thead>
+						<tr>
+							<th>Parking Space</th>
+							<th>Location</th>
+							<th>From</th>
+							<th>To</th>
+							<th>Accessible</th>
+							<th>Rate/Hour</th>
+							<th>Duration</th>
+							<th>Total Cost</th>
+						</tr>
+					</thead>
+					<tbody>
+						<ui:repeat value="#{cartBean.cartItems}" var="item"
+							xmlns:ui="http://java.sun.com/jsf/facelets">
+							<tr>
+								<td><strong>Space
+										##{item.parkingSpace.spaceNumber}</strong></td>
+								<td>#{item.parkingSpace.address1},
+									#{item.parkingSpace.city}</td>
+								<td><h:outputText value="#{item.bookingStart}">
+										<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+									</h:outputText></td>
+								<td><h:outputText value="#{item.bookingEnd}">
+										<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+									</h:outputText></td>
+								<td>#{item.parkingSpace.accessibleParking ? 'Yes' : 'No'}</td>
+								<td>€#{item.parkingSpace.pricePerHour}</td>
+								<td><h:outputText
+										value="#{(item.bookingEnd.time - item.bookingStart.time) / (1000 * 60 * 60)}">
+										<f:convertNumber pattern="0.0" />
+									</h:outputText> hours</td>
+								<td>€<h:outputText value="#{cartBean.getItemCost(item)}">
+										<f:convertNumber pattern="0.00" />
+									</h:outputText>
+								</td>
+							</tr>
+						</ui:repeat>
+					</tbody>
+				</table>
+
+				<div class="total-section">
+					<h3>Total Amount: €#{cartBean.totalPrice}</h3>
+
+					<h:commandButton value="Proceed to PayPal"
+						action="#{authorizePayment.checkOut}" styleClass="button">
+						<f:setPropertyActionListener target="#{authorizePayment.total}"
+							value="#{cartBean.totalPrice}" />
+						<f:setPropertyActionListener target="#{authorizePayment.product}"
+							value="Parking Space Bookings" />
+					</h:commandButton>
+				</div>
+			</div>
+		</h:panelGroup>
+	</h:form>
+</body>
+</html>

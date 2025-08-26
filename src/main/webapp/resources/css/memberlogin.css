@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+/* Background with overlay */
+.background {
+    position: relative;
+    height: 100vh;
+    background: url("#{resource['images/Member Image.jpg']}") no-repeat center center/cover;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,0.55); /* darker overlay */
+    z-index: 1;
+}
+
+/* ✅ Logo top-left */
+.logo-container {
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    z-index: 3;
+}
+
+.logo {
+    width: 140px;
+    height: auto;
+}
+
+/* Login Wrapper (form box) */
+.register-wrapper {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 30px 25px;
+    border-radius: 12px;
+    backdrop-filter: blur(6px);
+    width: 340px;
+    text-align: left;
+    color: #fff;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.5);
+}
+
+/* Form Title */
+.form-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+/* Form Rows */
+.form-row {
+    margin-bottom: 15px;
+}
+
+.form-label {
+    display: block;
+    font-size: 15px;
+    color: #fff;
+    margin-bottom: 6px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+}
+
+.form-input::placeholder {
+    color: #777;
+    font-size: 13px;
+}
+
+/* Buttons */
+.register-btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #8bb611;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-top: 8px;
+}
+
+.register-btn:hover {
+    background: #6cc44a;
+}
+
+/* Messages */
+.success-message {
+    color: #28a745;
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.error-message {
+    color: #ff4d4d;
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Responsive */
+@media(max-width:768px) {
+    .logo {
+        width: 100px;
+    }
+    .form-title {
+        font-size: 20px;
+    }
+    .register-wrapper {
+        width: 90%;
+        padding: 15px 20px;
+    }
+}

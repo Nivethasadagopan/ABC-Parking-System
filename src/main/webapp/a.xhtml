@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Customer Dashboard - ABC Parking System</title>
+
+  <link rel="stylesheet" href="#{resource['css/style_datetime_gap.css']}" />
+  <link rel="stylesheet" href="#{resource['css/style_cities.css']}" />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+  <style>
+    body { font-family: 'Roboto', sans-serif; margin: 0; background-color: #f4f4f4; }
+    .qpark-banner { background-color: white; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
+    .layout-wrapper { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .banner-header { display: flex; align-items: center; justify-content: space-between; height: 70px; }
+    .header-left .logo { height: 40px; }
+    .main-nav { font-size: 14px; display: flex; gap: 15px; align-items: center; flex-grow: 1; justify-content: center; }
+    .main-nav a { padding: 6px 12px; text-decoration: none; color: #333; font-weight: 500; }
+    .nav-actions { display: flex; align-items: center; gap: 20px; }
+    .profile-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle { background-color: #007bff; border: none; font-size: 14px; font-weight: bold; color: white; cursor: pointer; padding: 8px 12px; border-radius: 20px; }
+    .dropdown-menu { display: none; position: absolute; right: 0; background-color: white; min-width: 120px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); z-index: 1; border-radius: 6px; overflow: hidden; }
+    .dropdown-menu a, .dropdown-menu .h-command-link { color: #333; padding: 12px 16px; text-decoration: none; display: block; font-weight: normal; background: none; border: none; font-family: 'Roboto', sans-serif; font-size: inherit; width: 100%; text-align: left; cursor: pointer; }
+    .dropdown-menu a:hover, .dropdown-menu .h-command-link:hover { background-color: #f1f1f1; }
+    .profile-dropdown:hover .dropdown-menu { display: block; }
+    .raised-container { background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin-top: 30px; }
+    footer { text-align: center; padding: 20px; margin-top: 30px; color: #666; }
+    .cart-icon-container { position: relative; font-size: 16px; color: #555; text-decoration: none; display: flex; align-items: center; gap: 6px; }
+    .cart-icon-container:hover { color: #007bff; }
+    .cart-icon-container i { font-size: 22px; }
+    .cart-badge { position: absolute; top: -8px; left: 12px; background-color: #dc3545; color: white; border-radius: 50%; padding: 3px 6px; font-size: 11px; font-weight: bold; line-height: 1; border: 2px solid white; }
+  </style>
+</head>
+<body>
+
+  <div class="qpark-banner">
+    <div class="layout-wrapper">
+      <div class="banner-header">
+        <div class="header-left">
+          <img class="logo" src="resources/images/logo.png" alt="ABC Parking Logo" />
+        </div>
+
+        <nav class="main-nav">
+          <a href="view-bookings.xhtml">View My Bookings</a>
+          <a href="search-parking.xhtml">Search Parking</a>
+        </nav>
+
+        <div class="nav-actions">
+            <h:link outcome="view_cart" styleClass="cart-icon-container">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Cart</span>
+                <h:outputText value="#{cartBean.cartItemCount}" 
+                              styleClass="cart-badge" 
+                              rendered="#{cartBean.cartItemCount > 0}" />
+            </h:link>
+
+            <div class="profile-dropdown">
+                <button class="dropdown-toggle">
+                    <h:outputText value="Welcome, #{customerLoginBean.loggedInUser.name}!" rendered="#{not empty customerLoginBean.loggedInUser}" />
+                    <h:outputText value="Welcome, Guest!" rendered="#{empty customerLoginBean.loggedInUser}" />
+                </button>
+               <div class="dropdown-menu">
+                  <h:form>
+                      <h:commandLink action="#{customerLoginBean.logout}" value="Logout" styleClass="h-command-link" />
+                  </h:form>
+                </div>
+            </div>
+        </div> 
+
+      </div> 
+    </div>
+  </div>
+
+  <div class="layout-wrapper">
+    <div class="raised-container">
+      <h2>Welcome, #{customerLoginBean.loggedInUser.name}!</h2>
+      <p>From here you can manage your bookings and view your parking history.</p>
+    </div>
+  </div>
+
+  <div class="layout-wrapper">
+    <div class="city-grid-section">
+      <h2>Popular Cities Nearby Airport</h2>
+      <div class="city-grid">
+         <a href="#" class="city-card" style="background-image: url('resources/images/Dublin.jpg');">
+          <div class="overlay"></div>
+          <div class="city-label">Dublin</div>
+        </a>
+        <a href="#" class="city-card" style="background-image: url('resources/images/swords.jpg');">
+          <div class="overlay"></div>
+          <div class="city-label">Swords</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="layout-wrapper">
+      <p>&#169; 2025 ABC Parking System</p>
+    </div>
+  </footer>
+
+</body>
+</html>

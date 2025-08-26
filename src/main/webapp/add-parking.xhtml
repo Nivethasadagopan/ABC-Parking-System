@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>Add Parking Space</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: url("#{resource['images/Member Image.jpg']}") no-repeat center center/cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Dark overlay on background */
+body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 1;
+}
+
+/* Container (Card) */
+.container {
+    position: relative;
+    z-index: 2; /* above overlay */
+    background: rgba(255, 255, 255, 0.15); /* semi-transparent white */
+    backdrop-filter: blur(8px); /* glass effect */
+    padding: 11px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    max-width: 600px;
+    width: 100%;
+    color: #fff; /* white text for readability */
+}
+
+/* Header */
+header {
+    background: transparent;
+    color: #fff;
+    padding: 15px;
+    border-radius: 8px 8px 0 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header .header-title {
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: #fff;
+}
+
+header .header-title i {
+    color: #fff;
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    color: #eee; /* lighter for dark bg */
+}
+
+/* Inputs */
+input[type="text"], input[type="number"], select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+
+}
+
+textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+/* Footer */
+footer {
+    background: transparent;
+    color: #fff;
+    padding: 15px;
+    border-radius: 0 0 8px 8px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Buttons */
+.button-group {
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.btn-primary {
+margin-left: 200px;
+    background: #9acd32;
+    color: #000;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background: #7fbf1f;
+}
+
+.btn-secondary {
+margin-left: 200px;
+    background: #9acd32;
+    color: #000;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background: #7fbf1f;
+}
+
+.btn-secondary:hover {
+    background: #7fbf1f;
+}
+
+
+/* Headings */
+h2 {
+    color: #fff;
+    border-bottom: 2px solid #9acd32;
+    padding-bottom: 10px;
+}
+
+/* Price Input */
+.price-input {
+    position: relative;
+}
+
+.price-symbol {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    font-weight: bold;
+}
+
+.price-input input {
+    padding-left: 25px;
+}
+
+
+.bulk-section {
+    background: rgba(255, 255, 255, 0.1); /* subtle transparent white */
+    backdrop-filter: blur(6px);
+    padding: 15px;
+    border-radius: 6px;
+    margin: 15px 0;
+    border-left: 4px solid #9acd32; /* lime green to match buttons */
+    color: #fff;
+}
+
+.bulk-section h3 {
+    margin: 0 0 15px 0;
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+.bulk-input-group {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.bulk-input-field {
+    flex: 1;
+    min-width: 150px;
+}
+
+.bulk-input-field input {
+    margin: 0;
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+}
+
+.bulk-button {
+    white-space: nowrap;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .bulk-input-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .bulk-input-field {
+        min-width: auto;
+    }
+}
+
+    </style>
+</h:head>
+
+<h:body>
+    <div class="container">
+  
+
+        <h2>Add New Parking Space</h2>
+
+        <h:messages globalOnly="true" styleClass="messages" />
+
+        <h:form>
+            <!-- Address Line 1 -->
+            <div class="form-group">
+                <h:outputLabel for="address1" value="Address Line 1" />
+                <h:inputText id="address1" value="#{parkingSpaceBean.address1}" required="true"
+                             requiredMessage="Address Line 1 is required" />
+                <h:message for="address1" style="color:red;" />
+            </div>
+
+            <!-- Address Line 2 -->
+            <div class="form-group">
+                <h:outputLabel for="address2" value="Address Line 2" />
+                <h:inputText id="address2" value="#{parkingSpaceBean.address2}" required="true"
+                             requiredMessage="Address Line 2 is required" />
+                <h:message for="address2" style="color:red;" />
+            </div>
+
+            <!-- ✅ County Dropdown -->
+            <div class="form-group">
+                <h:outputLabel for="county" value="County" />
+                <h:selectOneMenu id="county" value="#{parkingSpaceBean.county}" required="true"
+                                 requiredMessage="County is required">
+                    <f:selectItem itemLabel="-- Select County --" itemValue="" />
+                    <f:selectItem itemLabel="Dublin" itemValue="Dublin" />
+                    <f:selectItem itemLabel="Skerries" itemValue="Skerries" />
+                    <f:selectItem itemLabel="Malahide" itemValue="Malahide" />
+                    <f:selectItem itemLabel="Swords" itemValue="Swords" />
+                </h:selectOneMenu>
+                <h:message for="county" style="color:red;" />
+            </div>
+
+            <!-- Price per Hour -->
+            <div class="form-group">
+                <h:outputLabel for="pricePerHour" value="Price per Hour" />
+                <div class="price-input">
+                    <span class="price-symbol">€</span>
+                    <h:inputText id="pricePerHour" value="#{parkingSpaceBean.pricePerHour}" required="true"
+                                 requiredMessage="Price is required">
+                        <f:convertNumber type="number" maxFractionDigits="2" />
+                    </h:inputText>
+                </div>
+                <h:message for="pricePerHour" style="color:red;" />
+            </div>
+
+            <!-- Accessible Parking -->
+            <div class="form-group">
+                <h:selectBooleanCheckbox id="accessible" value="#{parkingSpaceBean.accessibleParking}" />
+                <h:outputLabel for="accessible" value="Accessible Parking" />
+            </div>
+            
+            <div class="bulk-section">
+				<h3>Bulk Creation</h3>
+				<div style="color: white;">
+                  <p style="margin: 0 0 10px 0; color: white; font-size: 0.9rem;">
+                     Create multiple parking spaces with the same details
+                   </p>
+                 </div>
+					
+				<div class="bulk-input-group">
+					<div class="bulk-input-field">
+						<h:outputLabel for="bulkQuantity" value="Number of Spaces"
+							styleClass="label" />
+						<h:inputText id="bulkQuantity"
+							value="#{parkingSpaceBean.bulkQuantity}"
+							styleClass="form-control" placeholder="e.g., 5">
+							<f:convertNumber integerOnly="true" />
+							<f:validator validatorId="javax.faces.LongRange" minimum="1"
+								maximum="50" />
+						</h:inputText>
+						<h:message for="bulkQuantity" style="color: red;" />
+					</div>
+					<div class="bulk-button">
+						<h:commandButton value="Create Multiple Spaces"
+							action="#{parkingSpaceBean.addMultipleParkingSpaces}"
+							styleClass="btn btn-secondary" />
+					</div>
+				</div>
+			</div>
+
+            <!-- Close to Bus Stop -->
+            <div class="form-group">
+                <h:selectBooleanCheckbox id="busStop" value="#{parkingSpaceBean.closeToBus}" />
+                <h:outputLabel for="busStop" value="Close to Bus Stop" />
+            </div>
+
+            <!-- Submit Button -->
+            <div class="button-group">
+                <h:commandButton value="Add Single Parking Space"
+                
+                                 action="#{parkingSpaceBean.addParkingSpace}"
+                                 styleClass="btn btn-primary" />
+            </div>
+        </h:form>
+
+        <!-- Link to List Page -->
+        <p >
+            <h:link value="View All Parking Spaces" outcome="parking-list" />
+        </p>
+
+      
+    </div>
+</h:body>
+</html>

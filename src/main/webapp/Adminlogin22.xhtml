@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<h:head>
+    <title>Admin Login</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/adminlogin.css" />
+</h:head>
+
+<h:body>
+<div class="background">
+
+    <!-- Logo top-left -->
+    <div class="logo-container">
+        <img src="resources/images/Adminlogo.png" alt="ABC Parking Logo" class="logo"/>
+    </div>
+
+    <!-- Center Content -->
+    <div class="content">
+        <h1 class="main-title">Admin Login</h1>
+
+        <!-- Login Form -->
+        <h:form class="reg-form">
+
+            <!-- Email -->
+            <div class="form-group">
+                <label for="email">Email</label>
+                <h:inputText id="email" value="#{adminLoginBean.email}" required="true"
+                             requiredMessage="Email is required"
+                             styleClass="input-field" placeholder="Enter your email"/>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <h:inputSecret id="password" value="#{adminLoginBean.password}" required="true"
+                               requiredMessage="Password is required"
+                               styleClass="input-field" placeholder="Enter your password"/>
+            </div>
+
+            <!-- Login Button -->
+            <h:commandButton value="Login" 
+                             action="#{adminLoginBean.login}" 
+                             styleClass="reg-btn"/>
+
+            <!-- Messages -->
+            <h:messages globalOnly="true" style="color:red;" />
+            <h:outputText value="#{adminLoginBean.message}" style="color:green;" />
+        </h:form>
+    </div>
+
+    <!-- Bottom decoration image -->
+    <img src="resources/images/Adminreg1.png" alt="Bottom Decoration" class="bottom-img"/>
+</div>
+
+<!-- Info Section -->
+<section class="info-section">
+    <div class="info-container">
+        <h2>Welcome to Admin Panel</h2>
+        <p>
+            Manage members, create parking slots, and oversee system settings 
+            all from one place. This panel is designed to give you full control 
+            with a clean and simple interface.
+        </p>
+        <p class="highlight">
+            For a limited time only, new admins get exclusive access to advanced tools 
+            and features. This offer is valid for the year 2025.
+        </p>
+    </div>
+</section>
+</h:body>
+</html>

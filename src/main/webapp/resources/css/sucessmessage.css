@@ -1,0 +1,30 @@
+/* Reuse global styles from adminlogin.css */
+
+/* Success card styling */
+.success-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 15px;
+    backdrop-filter: blur(6px);
+    width: 400px;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.success-card h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #8bb611; /* green success */
+}
+
+.success-card p {
+    font-size: 18px;
+    margin-bottom: 25px;
+    color: #eee;
+}
+
+/* Action button */
+.actions {
+    margin-top: 15px;
+}

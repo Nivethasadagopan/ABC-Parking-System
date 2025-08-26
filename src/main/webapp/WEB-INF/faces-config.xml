@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+                        http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd"
+    version="2.3">
+
+    <managed-bean>
+        <managed-bean-name>customerRegister</managed-bean-name>
+        <managed-bean-class>com.customerRegister.customerRegister</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>customerLogin</managed-bean-name>
+		 <managed-bean-class>com.customerLogin.customerLogin</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+    
+        <!-- ✅ Add this new block -->
+    <managed-bean>
+        <managed-bean-name>adminRegister</managed-bean-name>
+        <managed-bean-class>com.adminRegister.adminRegister</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+        <managed-bean>
+        <managed-bean-name>adminLogin</managed-bean-name>
+		 <managed-bean-class>com.adminLogin.adminLogin</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+     </faces-config>

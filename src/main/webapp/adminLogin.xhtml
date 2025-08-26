@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<h:head>
+    <title>Management Login</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/adminlogin.css" />
+</h:head>
+
+<h:body>
+<div class="background">
+
+    <!-- Logo top-left -->
+    <div class="logo-container">
+        <img src="resources/images/Adminlogo.png" alt="ABC Parking Logo" class="logo"/>
+    </div>
+
+    <!-- Center Content -->
+    <div class="content">
+        <!--  <h1 class="main-title">Admin Login</h1>  -->
+
+        <!-- ✅ Single Login Form -->
+        <h:form class="reg-form">
+            <h2 class="form-title">Management Login</h2>
+            <h:messages globalOnly="true" styleClass="error-messages" />
+
+            <!-- Email -->
+<div class="form-row">
+    <h:outputLabel for="adminemail" value="Email:" styleClass="form-label" />
+    <h:inputText id="adminemail" value="#{adminLogin.email}" 
+                 required="true" requiredMessage="Email is required"
+                 styleClass="form-input" placeholder="Enter your email"/>
+    <h:message for="adminemail" 
+               style="color: #8bb611; font-size: 14px; display: block; text-align: center; margin-top: 6px;"/>
+</div>
+
+<!-- Password -->
+<div class="form-row">
+    <h:outputLabel for="adminpassword" value="Password:" styleClass="form-label" />
+    <h:inputSecret id="adminpassword" value="#{adminLogin.password}" 
+                   required="true" requiredMessage="Password is required"
+                   styleClass="form-input" placeholder="Enter your password"/>
+    <h:message for="adminpassword" 
+               style="color: #8bb611; font-size: 14px; display: block; text-align: center; margin-top: 6px;"/>
+</div>
+
+
+            <!-- Login Button -->
+            <h:commandButton value="Login" action="#{adminLogin.login}" styleClass="register-btn" />
+
+
+
+            <!-- Extra Links -->
+
+            <div style="text-align: center; margin-top: 20px;">
+                <h:link outcome="adminRegister.xhtml" 
+                        value="Don't have an account? Register here." />
+            </div>
+
+            <!-- Success/Error Messages -->
+            <h:outputText value="#{adminLogin.message}" 
+                          rendered="#{not empty adminLogin.message}" 
+                          style="display:block; margin-top:15px; color:red; font-weight:bold;" />
+        </h:form>
+    </div>
+
+    <!-- Bottom decoration image -->
+    <img src="resources/images/Adminreg1.png" alt="Bottom Decoration" class="bottom-img"/>
+</div>
+
+<!-- Info Section -->
+<section class="info-section">
+    <div class="info-container">
+        <h2>Welcome to Management Panel</h2>
+        <p>
+            Manage members, create parking slots, and oversee system settings 
+            all from one place. This panel is designed to give you full control 
+            with a clean and simple interface.
+        </p>
+        <p class="highlight">
+            For a limited time only, new admins get exclusive access to advanced tools 
+            and features. This offer is valid for the year 2025.
+        </p>
+    </div>
+</section>
+</h:body>
+</html>

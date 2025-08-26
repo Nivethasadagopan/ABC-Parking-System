@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>ABC Company Dashboard</title>
+    <link rel="stylesheet" href="resources/css/member.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet"/>
+    <link rel="icon" href="resources/images/fevicon.ico" type="image/x-icon"/>
+</h:head>
+
+<h:body>
+    <!-- Main Form with growl inside -->
+    <h:form id="companyDashboardForm">
+        <p:growl id="growl" showDetail="true" />
+
+        <div class="video-background">
+            <video autoplay="autoplay" muted="muted" loop="loop" id="background-video">
+                <source src="resources/videos/vid.mp4" type="video/mp4"/>
+            </video>
+
+            <!-- ✅ Overlay content starts -->
+            <div class="overlay-content">
+
+                <!-- ✅ Logo top-left -->
+                <div class="logo-container">
+                    <h:graphicImage library="images" name="Adminlogo.png" alt="ABC Parking Logo" styleClass="dashboard-logo"/>
+                </div>
+
+                <!-- Placeholder header -->
+                <div class="header centered-logo"></div>
+
+                <!-- 🔹 Top right action: Plain dropdown My Account -->
+                <div class="top-buttons">
+                    <div class="dropdown">
+                        <span class="droptext">My Account ⌄</span>
+                        <div class="dropdown-content">
+                            <a href="memberlog.xhtml">Logout</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ✅ Main dashboard content -->
+                <div class="main-content">
+                    <h1 style="font-size: 50px;">Airside Business Campus Parking</h1>
+                    <p><b>Manage your parking spaces efficiently.</b></p>
+                    <div class="action-links">
+                        <a href="add-parking.xhtml" class="action-link"><b>Manage Parking Spaces</b></a>
+                        <a href="set-prices.xhtml" class="action-link"><b>Set Pricing</b></a>
+                    </div>
+                </div>
+
+            </div> <!-- /overlay-content -->
+        </div> <!-- /video-background -->
+    </h:form>
+
+    <!-- ✅ Detailed info outside form -->
+    <div class="detailed-info">
+        <div class="latest-news">
+            <h2>Operating Hours :</h2>
+            <p>
+                Sunday – Saturday: Open 24 hours a day, 7 days a week
+            </p>
+
+            <h2>About the Facility :</h2>
+            <p>
+                ABC Airport Parking is conveniently located in a secure and easily accessible area. 
+                Please arrive at least <b>10 minutes before your planned airport check-in</b>. 
+                Upon arrival, pull up in front of the office to check in with an attendant.
+            </p>
+            <p>
+                We provide a <b>complimentary shuttle service every 2–10 minutes</b>, 
+                offering direct transportation to terminals A, B, and C. 
+                No trains or additional transfers are needed — our shuttles take you straight to your terminal.
+            </p>
+            <p>
+                ⚠️ Additional charges may apply for oversized vehicles.<br/>
+                💡 The <b>discounted online rate</b> via Way.com is exclusive and cannot be matched by on-site staff. 
+                Drive-up customers will be charged the <b>regular full rate</b>, which may be <b>25%–40% higher</b>.
+            </p>
+
+            <h2>Shuttle Information :</h2>
+            <p>
+                The shuttle service operates <b>24/7</b>, with free shuttles running every <b>2–10 minutes</b> 
+                and providing direct service to terminals A, B, and C.
+            </p>
+
+            <h2>Cancellation Policy :</h2>
+            <p>
+                We offer a <b>flexible cancellation policy</b>. Reservations can be cancelled 
+                any time before your scheduled check-in for a <b>full refund</b>.
+            </p>
+        </div>
+    </div>
+
+    <!-- ✅ Footer -->
+    <footer>
+        <p>Contact Information: support@abcparking.com</p>
+    </footer>
+
+</h:body>
+</html>
